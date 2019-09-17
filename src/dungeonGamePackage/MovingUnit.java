@@ -18,8 +18,9 @@ abstract class MovingUnit {
     }
 
     void takeDamage(int d){
-       hp -= d; // resulting hp after damage is hp-damage
-       if(hp <= 0){ // if ur hp is 0 or less than 0 then you're dead
+       hp -= d; // resulting hp after damage is hp-damage taken (d)
+       // if hp is 0 or less than 0 then you're dead
+       if(hp <= 0){ 
         dead = true;
        }
      }

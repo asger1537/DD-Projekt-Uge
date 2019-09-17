@@ -1,7 +1,7 @@
 package dungeonGamePackage;
 
-import processing.core.PVector;
 import static dungeonGamePackage.DungeonGame.DG;
+import processing.core.PVector;
 
 abstract class MovingUnit {
     PVector position;//center of unit
@@ -18,9 +18,21 @@ abstract class MovingUnit {
     }
 
     void takeDamage(int d){
-       hp -= d;
-       if(hp <= 0){
+       hp -= d; // resulting hp after damage is hp-damage
+       if(hp <= 0){ // if ur hp is 0 or less than 0 then you're dead
         dead = true;
-       } 
+       }
+     }
+
+
+    void moveTowards(){
+        //the direction of the vector from position pointing to target position
+        PVector dir = PVector.sub(targetPosition, position).normalize();
+
+        if (PVector.dist(position, targetPosition) > ms){
+            position.add(PVector.mult(dir, ms));
+        } else{
+            position = targetPosition.copy();
+        }
     }
 }

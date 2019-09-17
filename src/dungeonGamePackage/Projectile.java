@@ -12,11 +12,19 @@ class Projectile {
     int dmg;
     String[] canHit;
     float radius;
-    Color color;
+    int color;
 
-    Projectile() {
-
+    Projectile(PVector position, PVector velocity, float speed, int dmg,
+    String[] canHit, float radius, int color) {
+        this.position = position;
+        this.velocity = velocity;
+        this.speed = speed;
+        this.dmg = dmg;
+        this.canHit = canHit;
+        this.radius = radius;
+        this.color = color;
     }
+    
     void move() {
         position.add(velocity);
     }
@@ -39,7 +47,23 @@ class Projectile {
             yCollision = false;
         }
         return new boolean[] {xCollision,yCollision};
-
     }
 
+    void onEdgeCollsion(){
+        //if it collides with the left and right walls reverse x-velocity
+        if(checkEdgeCollision()[0]){
+            velocity.x *= -1;
+        }
+
+        //if it collides with bottom and top walls reverse y-velocity
+        if(checkEdgeCollision()[1]){
+            velocity.y *= -1;
+        }
+    }
+
+    void display(){
+        // draws and colors the projectile 
+        DG.fill(color);
+        Utility.circle(position, radius);        
+    }
 }

@@ -16,7 +16,7 @@ class Input{
         }
         //shoot
         if (DG.mouseButton == DG.RIGHT){
-
+            DG.p.attack();
         }
     }
 

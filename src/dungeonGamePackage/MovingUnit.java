@@ -16,4 +16,11 @@ abstract class MovingUnit {
         DG.fill(color);
         Utility.circle(position, radius);    
     }
+
+    void takeDamage(int d){
+       hp -= d;
+       if(hp <= 0){
+        dead = true;
+       } 
+    }
 }

@@ -16,7 +16,7 @@ abstract class Enemy extends MovingUnit {
     void checkAggroRange(Player p) {
         target = p;
         float dist = PVector.dist(position, target.position);
-        if (dist >= agroRange) {
+        if (dist <= agroRange) {
             targetPosition = target.position;
         }
     }

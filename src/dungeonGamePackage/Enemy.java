@@ -1,5 +1,5 @@
 package dungeonGamePackage;
-
+import static dungeonGamePackage.DungeonGame.DG;
 import processing.core.PVector;
 
 abstract class Enemy extends MovingUnit {
@@ -13,11 +13,10 @@ abstract class Enemy extends MovingUnit {
 
     }
 
-    void checkAggroRange(Player p) {
-        target = p;
-        float dist = PVector.dist(position, target.position);
+    void checkAggroRange() {
+        float dist = PVector.dist(position, DG.p.position);
         if (dist <= agroRange) {
-            targetPosition = target.position;
+            target = DG.p;
         }
     }
 }

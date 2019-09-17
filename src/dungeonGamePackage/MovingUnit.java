@@ -11,6 +11,7 @@ abstract class MovingUnit {
     int color;
     boolean dead;
     int hp;//hit points
+    int lvl;
 
     void display(){
         DG.fill(color);

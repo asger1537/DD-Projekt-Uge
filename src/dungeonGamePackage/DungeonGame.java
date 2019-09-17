@@ -21,4 +21,14 @@ public class DungeonGame extends PApplet{
   
 	}
 
+	@Override
+	public void mousePressed(){
+		Input.mousePressed();
+	}
+
+	@Override
+	public void keyPressed(){
+		Input.keyPressed();
+	}
+
 }

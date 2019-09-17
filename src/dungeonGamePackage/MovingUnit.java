@@ -17,6 +17,15 @@ abstract class MovingUnit {
         Utility.circle(position, radius);    
     }
 
+    void takeDamage(int d){
+       hp -= d; // resulting hp after damage is hp-damage taken (d)
+       // if hp is 0 or less than 0 then you're dead
+       if(hp <= 0){ 
+        dead = true;
+       }
+     }
+
+
     void moveTowards(){
         //the direction of the vector from position pointing to target position
         PVector dir = PVector.sub(targetPosition, position).normalize();

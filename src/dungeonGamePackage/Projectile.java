@@ -28,6 +28,11 @@ class Projectile {
     void move() {
         position.add(velocity);
     }
+    boolean checkUnitCollision() {
+        boolean playerProjectileCollideEnemy = false;
+        if (position.dist(v))
+        return playerProjectileCollideEnemy;
+    }
     boolean[] checkEdgeCollision() {
         boolean xCollision = false;
         boolean yCollision = false;

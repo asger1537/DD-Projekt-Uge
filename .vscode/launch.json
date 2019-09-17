@@ -14,7 +14,7 @@
             "type": "java",
             "name": "Debug (Launch)-DG",
             "request": "launch",
-            "mainClass": "dungeonGamePackage.DG"
+            "mainClass": "dungeonGamePackage.DungeonGame"
         }
     ]
 }

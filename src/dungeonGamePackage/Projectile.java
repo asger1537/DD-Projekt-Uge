@@ -17,7 +17,9 @@ class Projectile {
     Projectile() {
 
     }
-
+    void move() {
+        position.add(velocity);
+    }
     boolean[] checkEdgeCollision() {
         boolean xCollision = false;
         boolean yCollision = false;

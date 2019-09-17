@@ -11,7 +11,12 @@ abstract class MovingUnit {
     int color;
     boolean dead;
     int hp;// hit points
+    int maxHp; //max hit points
     int lvl;
+    float borderColor;
+    float borderWidth;
+    float healthBarLengthHP;
+    float healthBarLength;
 
     void display() {
         DG.fill(color);
@@ -37,6 +42,27 @@ abstract class MovingUnit {
         }
     }
 
-    void onDeath(){   
+    void onDeath() {
     }
+
+    void showHealthBar(){
+        float healthPercent = (hp/maxHp)*100;
+        int healthBarColor = DG.color(0, 0, 0); 
+        if (healthPercent > 50){
+          healthBarColor = DG.color((int)(255-healthPercent*2.55), 255, 0);
+        }
+        if (healthPercent <= 50){
+          healthBarColor = DG.color(255, (int)(healthPercent*2.55), 0);
+        }
+        DG.fill(healthBarColor);
+        DG.stroke(borderColor);
+        DG.strokeWeight(borderWidth);
+        //the length of the healthBar
+        float l = healthBarLengthHP/maxHp;
+        //makes sure the healthbar doesn't get negative length
+        if (l < 0) l = 0;
+        DG.rect(position.x-healthBarLength/2, position.y-50, l, 10);
+        DG.stroke(0);
+        DG.strokeWeight(1);
+      }
 }

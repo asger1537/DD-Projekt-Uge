@@ -12,7 +12,7 @@ class Projectile {
     int dmg;
     String[] canHit;
     float radius;
-    Color color;
+    int color;
 
     Projectile() {
 
@@ -46,5 +46,10 @@ class Projectile {
         if(checkEdgeCollision()[1]){
             velocity.y *= -1;
         }
+    }
+
+    void display(){
+        DG.fill(color);
+        Utility.circle(position, radius);        
     }
 }

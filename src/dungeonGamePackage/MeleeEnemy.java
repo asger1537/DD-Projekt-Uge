@@ -21,6 +21,7 @@ class MeleeEnemy extends Enemy {
         expReward = 20;
     }
 
+    @Override
     public void update(){
         display();
         if (target != null){

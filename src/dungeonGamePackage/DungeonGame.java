@@ -1,5 +1,7 @@
 package dungeonGamePackage;
 
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 
 public class DungeonGame extends PApplet{
@@ -8,6 +10,9 @@ public class DungeonGame extends PApplet{
 	//global variables
 	Player p;
 	int currentZone;
+	ArrayList<Enemy> enemies;
+	ArrayList<Projectile> projectiles;
+
 	public static void main(String[] args) {
 		PApplet.main("dungeonGamePackage.DungeonGame");
 	}
@@ -23,7 +28,17 @@ public class DungeonGame extends PApplet{
 	}
 
 	public void draw() {
-  
+		background(255);
+		p.update();
+		for (int i = 0; i < enemies.size(); i++){
+			enemies.get(i).update();
+		}
+
+		for (int i = 0; i < projectiles.size(); i++){
+			projectiles.get(i).update();
+		}
+
+
 	}
 
 	@Override

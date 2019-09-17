@@ -7,5 +7,8 @@ abstract class Enemy extends MovingUnit{
     int expReward;
     Player target;
 
+    public void update(){
+        
+    }
     
 }

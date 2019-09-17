@@ -12,10 +12,17 @@ class Projectile {
     int dmg;
     String[] canHit;
     float radius;
-    Color color;
+    int color;
 
-    Projectile() {
-
+    Projectile(PVector position, PVector velocity, float speed, int dmg,
+    String[] canHit, float radius, int color) {
+        this.position = position;
+        this.velocity = velocity;
+        this.speed = speed;
+        this.dmg = dmg;
+        this.canHit = canHit;
+        this.radius = radius;
+        this.color = color;
     }
 
     boolean[] checkEdgeCollision() {

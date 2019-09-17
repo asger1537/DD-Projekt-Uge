@@ -17,4 +17,15 @@ class Player extends MovingUnit {
         lvl = 0;
         exp = 0;
     }
+
+    public void update(){
+        display();
+        if (position != targetPosition){
+            moveTowardsTargetPosition();
+        }
+    }
+
+    public void attack(){
+        //to do
+    }
 }

@@ -4,6 +4,9 @@ import processing.core.PApplet;
 
 public class DungeonGame extends PApplet{
 	public static DungeonGame DG;
+
+	//global variables
+	Player p;
 	public static void main(String[] args) {
 		PApplet.main("dungeonGamePackage.DungeonGame");
 	}
@@ -14,7 +17,7 @@ public class DungeonGame extends PApplet{
 	}
 
 	public void setup() {
-
+		p = new Player();
 	}
 
 	public void draw() {

@@ -37,4 +37,7 @@ abstract class MovingUnit {
             position = targetPosition.copy();
         }
     }
+
+    void onDeath(){   
+    }
 }

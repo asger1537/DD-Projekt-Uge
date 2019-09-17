@@ -27,5 +27,7 @@ class MeleeEnemy extends Enemy {
         }
     }
 
-    
+    void onDeath(){
+        
+    }
 }

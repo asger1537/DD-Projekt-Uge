@@ -24,7 +24,13 @@ class Projectile {
         this.radius = radius;
         this.color = color;
     }
-    
+    void update() {
+        move();
+        checkEdgeCollision();
+        checkUnitCollision();
+        onEdgeCollsion();
+        display();
+    }
     void move() {
         position.add(velocity);
     }

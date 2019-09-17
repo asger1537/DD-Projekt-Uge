@@ -8,6 +8,7 @@ public class DungeonGame extends PApplet{
 	//global variables
 	Player p;
 	int currentZone;
+	Projectile proj;
 	public static void main(String[] args) {
 		PApplet.main("dungeonGamePackage.DungeonGame");
 	}
@@ -23,7 +24,7 @@ public class DungeonGame extends PApplet{
 	}
 
 	public void draw() {
-  
+		proj.update();
 	}
 
 	@Override

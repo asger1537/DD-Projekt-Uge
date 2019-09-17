@@ -7,17 +7,15 @@ import processing.core.PVector;
 class Projectile {
     PVector position;
     PVector velocity;
-    float speed;
     int dmg;
     String[] canHit;
     float radius;
     int color;
 
-    Projectile(PVector position, PVector velocity, float speed, int dmg,
+    Projectile(PVector position, PVector velocity, int dmg,
     String[] canHit, float radius, int color) {
         this.position = position;
         this.velocity = velocity;
-        this.speed = speed;
         this.dmg = dmg;
         this.canHit = canHit;
         this.radius = radius;

@@ -11,7 +11,6 @@ class MeleeEnemy extends Enemy {
         color = DG.color(221, 33, 6);
         ms = 3f;
         radius = 10;
-        color = DG.color(36, 191, 83);
         dead = false;
         hp = 100;
         expReward = 0;

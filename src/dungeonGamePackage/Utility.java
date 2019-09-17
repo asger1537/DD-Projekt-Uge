@@ -14,4 +14,24 @@ class Utility {
         if (x > 0) return 1;
         return 0;
     }
+
+    static void spawnEnemyCluster(PVector position){
+        int numEnemies = DG.floor(DG.random(3, 6));
+        PVector spawnVector = new PVector(30, 0);
+
+        for (int i = 0; i < numEnemies; i++){
+            PVector spawnPosition;
+        
+            //the first enemy is just spawned at the position, but the subsequent enemies are spawned around 
+            //the first enemy with some randomness
+            if (i == 0){
+                spawnPosition = position;        
+            } else{
+                spawnPosition = PVector.add(position, spawnVector);
+            } 
+            spawnVector.rotate(2*DG.PI/numEnemies*DG.random(0.8f, 1.2f));
+            DG.enemies.add(new MeleeEnemy(spawnPosition));
+
+        }
+    }
 }

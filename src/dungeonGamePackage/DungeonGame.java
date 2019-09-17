@@ -3,6 +3,7 @@ package dungeonGamePackage;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import processing.core.PVector;
 
 public class DungeonGame extends PApplet{
 	public static DungeonGame DG;
@@ -27,6 +28,8 @@ public class DungeonGame extends PApplet{
 		currentZone = 0;
 		enemies = new ArrayList<Enemy>();
 		projectiles = new ArrayList<Projectile>();
+
+		Utility.spawnEnemyCluster(new PVector(width/2, height/2));
 	}
 
 	public void draw() {

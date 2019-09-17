@@ -12,6 +12,7 @@ abstract class Enemy extends MovingUnit {
     public void update() {
 
     }
+
     void checkAggroRange(Player p) {
         target = p;
         float dist = PVector.dist(position, target.position);

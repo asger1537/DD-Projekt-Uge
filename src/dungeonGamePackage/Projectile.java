@@ -21,6 +21,7 @@ class Projectile {
         this.radius = radius;
         this.color = color;
     }
+
     void update() {
         move();
         checkEdgeCollision();
@@ -28,14 +29,37 @@ class Projectile {
         onEdgeCollsion();
         display();
     }
+
     void move() {
         position.add(velocity);
     }
-    boolean checkUnitCollision() {
-        boolean playerProjectileCollideEnemy = false;
-        //if (position.dist())
-        return playerProjectileCollideEnemy;
+
+    void checkUnitCollision() {
+        if (Utility.contains(canHit, "Enemy")){
+            for (int i = 0; i < DG.enemies.size(); i++){
+                Enemy e = DG.enemies.get(i);
+                if (PVector.dist(position, e.position) < radius + e.radius){
+                    onEnemyCollision(e);
+                    break;
+                }
+            }
+        }
+
+        if (Utility.contains(canHit, "Player")){
+            if (PVector.dist(position, DG.p.position) < radius + DG.p.radius){
+                onPlayerCollision();
+            }
+        }
     }
+
+    void onEnemyCollision(Enemy e){
+
+    }
+
+    void onPlayerCollision(){
+
+    }
+
     boolean[] checkEdgeCollision() {
         boolean xCollision = false;
         boolean yCollision = false;

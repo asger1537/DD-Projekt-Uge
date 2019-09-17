@@ -34,4 +34,11 @@ class Utility {
 
         }
     }
+
+    static boolean contains(String[] strings, String s){
+        for (int i = 0; i < strings.length; i++){
+            if (strings[i] == s) return true;
+        }
+        return false;
+    }
 }

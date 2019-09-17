@@ -27,7 +27,7 @@ abstract class MovingUnit {
      }
 
 
-    void moveTowards(){
+    void moveTowardsTargetPosition(){
         //the direction of the vector from position pointing to target position
         PVector dir = PVector.sub(targetPosition, position).normalize();
 
@@ -36,5 +36,8 @@ abstract class MovingUnit {
         } else{
             position = targetPosition.copy();
         }
+    }
+
+    void onDeath(){   
     }
 }

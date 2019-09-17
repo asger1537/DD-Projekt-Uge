@@ -49,6 +49,7 @@ class Projectile {
     }
 
     void display(){
+        // draws and colors the projectile 
         DG.fill(color);
         Utility.circle(position, radius);        
     }

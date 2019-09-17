@@ -13,7 +13,6 @@ class MeleeEnemy extends Enemy {
         radius = 10;
         dead = false;
         hp = 100;
-        expReward = 0;
         agroRange = 200;
         dmg = 10;
         atkcd = 60;
@@ -28,6 +27,5 @@ class MeleeEnemy extends Enemy {
         }
     }
 
-
-
+    
 }

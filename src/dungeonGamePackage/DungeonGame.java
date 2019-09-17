@@ -25,6 +25,8 @@ public class DungeonGame extends PApplet{
 	public void setup() {
 		p = new Player();
 		currentZone = 0;
+		enemies = new ArrayList<Enemy>();
+		projectiles = new ArrayList<Projectile>();
 	}
 
 	public void draw() {

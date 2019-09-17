@@ -1,6 +1,5 @@
 package dungeonGamePackage;
 
-import java.awt.Color;
 import static dungeonGamePackage.DungeonGame.DG;
 
 import processing.core.PVector;
@@ -72,4 +71,5 @@ class Projectile {
         DG.fill(color);
         Utility.circle(position, radius);        
     }
+
 }

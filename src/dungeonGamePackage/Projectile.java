@@ -30,7 +30,7 @@ class Projectile {
     }
     boolean checkUnitCollision() {
         boolean playerProjectileCollideEnemy = false;
-        if (position.dist(v))
+        //if (position.dist())
         return playerProjectileCollideEnemy;
     }
     boolean[] checkEdgeCollision() {

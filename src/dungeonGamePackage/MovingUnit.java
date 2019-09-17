@@ -37,4 +37,6 @@ abstract class MovingUnit {
         }
     }
 
+    void onDeath(){   
+    }
 }

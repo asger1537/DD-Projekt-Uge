@@ -24,13 +24,19 @@ class Projectile {
         this.radius = radius;
         this.color = color;
     }
-    
+    void update() {
+        move();
+        checkEdgeCollision();
+        checkUnitCollision();
+        onEdgeCollsion();
+        display();
+    }
     void move() {
         position.add(velocity);
     }
     boolean checkUnitCollision() {
         boolean playerProjectileCollideEnemy = false;
-        if (position.dist(v))
+        //if (position.dist())
         return playerProjectileCollideEnemy;
     }
     boolean[] checkEdgeCollision() {

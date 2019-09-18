@@ -9,7 +9,8 @@ class MeleeEnemy extends Enemy {
         this.position = position;
         lvl = DG.currentZone;
         color = DG.color(221, 33, 6);
-        ms = 3f;
+        msBase = 3f;
+        msCurrent = msBase;
         radius = 10;
         dead = false;
         maxHp = 100;
@@ -17,6 +18,7 @@ class MeleeEnemy extends Enemy {
         agroRange = 200;
         dmg = 10;
         atkcd = 60;
+        atkcdCurrent = 0;
         expReward = 20;
         healthBarLength = 30;
     }
@@ -28,6 +30,15 @@ class MeleeEnemy extends Enemy {
         if (target != null) {
             targetPosition = target.position;
             moveTowardsTargetPosition();
+    
+            if (atkcdCurrent > 1){
+                atkcdCurrent--;
+                msCurrent = msBase * 0.75f;
+            } else{
+                checkPlayerCollision();
+                msCurrent = msBase;
+            }
+
         }
     }
 

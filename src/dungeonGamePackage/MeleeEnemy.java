@@ -34,4 +34,4 @@ class MeleeEnemy extends Enemy {
     void onDeath(){
      DG.p.exp += expReward;
     }
-}
+}   

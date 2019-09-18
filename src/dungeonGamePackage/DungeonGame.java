@@ -20,6 +20,7 @@ public class DungeonGame extends PApplet{
 
 	public void settings() {
 		size(800, 800);
+		//fullScreen();
 		DG = this;
 	}
 

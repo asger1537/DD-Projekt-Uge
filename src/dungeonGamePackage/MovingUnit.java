@@ -15,7 +15,6 @@ abstract class MovingUnit {
     int lvl;
     float borderColor;
     float borderWidth;
-    float healthBarLengthHP;
     float healthBarLength;
 
     void display() {
@@ -59,7 +58,7 @@ abstract class MovingUnit {
         DG.stroke(borderColor);
         DG.strokeWeight(borderWidth);
         //the length of the healthBar
-        float l = healthBarLengthHP/maxHp;
+        float l = healthBarLength*hp/maxHp;
         //makes sure the healthbar doesn't get negative length
         if (l < 0) l = 0;
         DG.rect(position.x-healthBarLength/2, position.y-50, l, 10);

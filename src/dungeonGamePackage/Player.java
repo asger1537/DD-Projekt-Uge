@@ -19,6 +19,9 @@ class Player extends MovingUnit {
         lvl = 0;
         exp = 0;
         lookDirection = new PVector();
+        borderWidth = 1;
+        healthBarLength = 50;
+        
     }
 
     public void update(){

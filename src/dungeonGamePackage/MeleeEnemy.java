@@ -12,11 +12,13 @@ class MeleeEnemy extends Enemy {
         ms = 3f;
         radius = 10;
         dead = false;
-        hp = 100;
+        maxHp = 100;
+        hp = maxHp;
         agroRange = 200;
         dmg = 10;
         atkcd = 60;
         expReward = 20;
+        healthBarLength = 30;
     }
 
     @Override

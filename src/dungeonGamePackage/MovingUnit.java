@@ -19,6 +19,7 @@ abstract class MovingUnit {
     float healthBarLength;
 
     void display() {
+        showHealthBar();
         DG.fill(color);
         Utility.circle(position, radius);
     }

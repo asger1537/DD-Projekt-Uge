@@ -31,8 +31,11 @@ class Utility {
             } 
             spawnVector.rotate(2*DG.PI/numEnemies*DG.random(0.8f, 1.2f));
             DG.enemies.add(new MeleeEnemy(spawnPosition));
-
         }
+    }
+
+    static void spawnBoss(PVector spawnPosition){
+        DG.enemies.add(new BossEnemy(spawnPosition));
     }
 
     static boolean contains(String[] strings, String s){

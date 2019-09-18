@@ -19,6 +19,7 @@ class BossEnemy extends Enemy {
         agroRange = 100;
         dmg = 20;
         atkcd = 60;
+        atkcdCurrent = 0;
         expReward = 50;
         healthBarLength = 60;
         targetDirection = new PVector();
@@ -30,20 +31,20 @@ class BossEnemy extends Enemy {
         checkAggro();
         if (target != null) {
             targetPosition = target.position;
-        }
-        if (atkcdCurrent > 1) {
-            atkcdCurrent--;
-        } else {
-            setTargetdirection();
-            attack();
+            if (atkcdCurrent > 1) {
+                atkcdCurrent--;
+            } else {
+                setTargetdirection();
+                attack();
+            }
         }
     }
 
-    public void setTargetdirection() {
-        targetDirection = PVector.sub(new PVector(targetPosition.x, targetPosition.y), position).normalize();
+     void setTargetdirection() {
+        targetDirection = PVector.sub(targetPosition,position).normalize();
     }
 
-    public void attack() {
+     void attack() {
         DG.projectiles.add(new Projectile(PVector.add(position, PVector.mult(targetDirection, radius + 10)),
                 PVector.mult(targetDirection, 10), 40, new String[] { "Player" }, 5, DG.color(206, 43, 34)));
         atkcdCurrent = atkcd;
@@ -51,5 +52,6 @@ class BossEnemy extends Enemy {
 
     void onDeath() {
         DG.p.expGet(expReward);
+        //todo go to next level or spawn a portal to next level
     }
 }

@@ -66,8 +66,8 @@ abstract class MovingUnit {
             l = 0;
         DG.rect(position.x - healthBarLength / 2, position.y - 50, l, 10);
         DG.fill(0);
-        DG.textSize(7);
-        DG.text(healthbarContent, position.x - DG.textWidth(healthbarContent)/2, position.y - 43);
+        DG.textSize(8);
+        DG.text(healthbarContent, position.x - DG.textWidth(healthbarContent)/2, position.y - 42);
         DG.stroke(0);
         DG.strokeWeight(1);
     }

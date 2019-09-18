@@ -28,16 +28,18 @@ public class DungeonGame extends PApplet {
 		currentZone = 0;
 		enemies = new ArrayList<Enemy>();
 		projectiles = new ArrayList<Projectile>();
-
 		Utility.spawnEnemyCluster(new PVector(width / 2, height / 2));
 		UI.initializeVariables();
 
 	}
 
 	public void draw() {
-		//println();
 		background(255);
 		p.update();
+		if(enemies.size() == 0){
+			Utility.spawnBoss(new PVector(DG.width/2, DG.height/5));
+		}
+		
 		for (int i = 0; i < enemies.size(); i++) {
 			enemies.get(i).update();
 			if (enemies.get(i).dead) {
@@ -45,7 +47,7 @@ public class DungeonGame extends PApplet {
 				enemies.remove(i);
 			}
 		}
-
+		
 		for (int i = 0; i < projectiles.size(); i++) {
 			projectiles.get(i).update();
 			if (projectiles.get(i).hit) {

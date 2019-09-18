@@ -8,6 +8,7 @@ class Player extends MovingUnit {
     PVector lookDirection;
     int expLevelUp;
     int levelUpHpIncrease;
+    int expLevelUpRequirement;
 
     Player() {
         position = new PVector(DG.width / 2f, DG.height * 7f / 8f);// middle bottom
@@ -26,12 +27,12 @@ class Player extends MovingUnit {
         healthBarLength = 50;
         expLevelUp = 60;
         levelUpHpIncrease = 50;
+        expLevelUpRequirement = 60;
 
     }
 
     public void update() {
         display();
-        levelUp();
         if (position != targetPosition) {
             moveTowardsTargetPosition();
         }
@@ -48,9 +49,10 @@ class Player extends MovingUnit {
     }
 
     void levelUp() {
-        if (exp >= expLevelUp * (lvl + 1) == true) {
-            exp -= expLevelUp * (lvl + 1);
+        if (exp >= expLevelUp == true) {
+            exp -= expLevelUp;
             lvl += 1;
+            expLevelUp += lvl*60;
             maxHp += levelUpHpIncrease;
             hp = maxHp;
         }

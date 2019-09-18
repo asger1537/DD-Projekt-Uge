@@ -33,6 +33,7 @@ public class DungeonGame extends PApplet{
 	}
 
 	public void draw() {
+		println();
 		background(255);
 		p.update();
 		for (int i = 0; i < enemies.size(); i++){

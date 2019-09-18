@@ -24,7 +24,7 @@ class MeleeEnemy extends Enemy {
     @Override
     public void update(){
         display();
-        checkAggroRange();
+        checkAggro();
         if (target != null){
             targetPosition = target.position;
             moveTowardsTargetPosition();

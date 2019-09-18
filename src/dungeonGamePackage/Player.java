@@ -36,7 +36,7 @@ class Player extends MovingUnit {
     }
 
     public void update() {
-        display();
+         display();
         if (position != targetPosition) {
             moveTowardsTargetPosition();
         }

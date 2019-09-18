@@ -34,6 +34,7 @@ class BossEnemy extends Enemy {
         if (atkcdCurrent > 1) {
             atkcdCurrent--;
         } else {
+            setTargetdirection();
             attack();
         }
     }
@@ -46,5 +47,9 @@ class BossEnemy extends Enemy {
         DG.projectiles.add(new Projectile(PVector.add(position, PVector.mult(targetDirection, radius + 10)),
                 PVector.mult(targetDirection, 10), 40, new String[] { "Player" }, 5, DG.color(206, 43, 34)));
         atkcdCurrent = atkcd;
+    }
+
+    void onDeath() {
+        DG.p.expGet(expReward);
     }
 }

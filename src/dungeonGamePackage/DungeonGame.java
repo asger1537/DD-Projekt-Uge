@@ -13,7 +13,6 @@ public class DungeonGame extends PApplet {
 	int currentZone;
 	ArrayList<Enemy> enemies;
 	ArrayList<Projectile> projectiles;
-
 	public static void main(String[] args) {
 		PApplet.main("dungeonGamePackage.DungeonGame");
 	}

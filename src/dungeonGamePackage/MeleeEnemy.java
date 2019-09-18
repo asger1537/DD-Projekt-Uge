@@ -24,10 +24,10 @@ class MeleeEnemy extends Enemy {
     }
 
     @Override
-    public void update(){
+    public void update() {
         display();
         checkAggro();
-        if (target != null){
+        if (target != null) {
             targetPosition = target.position;
             moveTowardsTargetPosition();
     
@@ -43,7 +43,7 @@ class MeleeEnemy extends Enemy {
     }
 
     void onDeath() {
-        DG.p.exp += expReward;
+        DG.p.expGet(expReward);
     }
 
     @Override

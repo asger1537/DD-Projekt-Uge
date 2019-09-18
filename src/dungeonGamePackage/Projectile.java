@@ -57,8 +57,8 @@ class Projectile {
     }
 
     void onPlayerCollision() {
-       DG.p.takeDamage(dmg);
-       hit = true;
+        DG.p.takeDamage(dmg);
+        hit = true;
     }
 
     boolean[] checkEdgeCollision() {

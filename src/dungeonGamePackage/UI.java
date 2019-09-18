@@ -2,35 +2,52 @@ package dungeonGamePackage;
 
 import static dungeonGamePackage.DungeonGame.DG;
 
-abstract class UI{
-    float abilityBarX, abilityBarY, abilityBarLength, abilityBarHeight, abilityBarTextHeight;
+class UI{
 
-    abilityBarTextHeight = 20f;
-    abilityBarLength = DG.width*0.25f;
-    abilityBarX = DG.width/2f-abilityBarLength/2f;//from center
-    abilityBarHeight = abilityBarLength/5f;
-    abilityBarY = DG.height-abilityBarTextHeight-abilityBarHeight;
+    static float abilityBarX, abilityBarY, abilityBarLength, abilityBarHeight, abilityBarTextHeight;
+    static float expBarX, expBarY, expBarLength, expBarHeight;
+    static String[] keybinds;
+
+    static void initializeVariables(){
+        keybinds = new String[]{"r clk", "q", "w", "e", "r"};
+
+        //AbilityBar variables
+        abilityBarLength = DG.width*0.25f;
+        abilityBarX = DG.width/2f-abilityBarLength/2f;//from center
+        DG.println(abilityBarLength);
+        abilityBarHeight = abilityBarLength/5f;
+        abilityBarTextHeight = abilityBarHeight/4f;
+        abilityBarY = DG.height-abilityBarTextHeight-abilityBarHeight;
+
+        //Expbar variables
+        expBarLength = abilityBarLength;
+        expBarHeight = abilityBarHeight/5f;
+        expBarX = abilityBarX;
+        expBarY = abilityBarY - expBarHeight;
+    }
 
 
-    void showAbilityBar(){
-        DG.rect(abilityBarX, abilityBarY, abilityBarLength, abilityBarLength);
-        DG.noFill();
+    static void showAbilityBar(){
 
+        int keybindIdx = 0;
         for (float x = abilityBarX; x < abilityBarX + abilityBarLength; x += abilityBarLength/5f){
-            DG.line(x, abilityBarY, x, abilityBarY + abilityBarHeight);
+            DG.noFill();
+            DG.rect(x, abilityBarY, abilityBarHeight, abilityBarHeight);
+            DG.rect(x, abilityBarY + abilityBarHeight, abilityBarHeight, abilityBarTextHeight);
+            String keybind = keybinds[keybindIdx];
+            DG.textSize(25);
+            DG.textAlign(DG.CENTER);
+            DG.fill(50);
+            DG.text(keybind, x+abilityBarHeight/2, DG.height-abilityBarTextHeight/10f);
+            keybindIdx++;
+            //To do - add keybind text
         }
 
 
     }
-    
-    float expBarX, expBarY, expBarLength, expBarHeight;
 
-    expBarLength = abilityBarLength;
-    expBarHeight = 30f;
-    expBarX = DG.width*0.2f;
-    expBarY = abilityBarY - expBarHeight;
-
-    void showExpBar(){
+    static void showExpBar(){
+        DG.noFill();
         DG.rect(expBarX, expBarY, expBarLength, expBarHeight);//drawing the bar
         DG.fill(88, 29, 169);
         DG.rect(expBarX, expBarY, expBarLength*DG.p.exp/DG.p.expLevelUp, expBarHeight);    

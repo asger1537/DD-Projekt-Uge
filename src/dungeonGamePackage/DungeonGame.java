@@ -18,8 +18,8 @@ public class DungeonGame extends PApplet {
 	}
 
 	public void settings() {
-		size(800, 800);
-		// fullScreen();
+		//size(800, 800);
+		fullScreen();
 		DG = this;
 	}
 
@@ -30,10 +30,12 @@ public class DungeonGame extends PApplet {
 		projectiles = new ArrayList<Projectile>();
 
 		Utility.spawnEnemyCluster(new PVector(width / 2, height / 2));
+		UI.initializeVariables();
+
 	}
 
 	public void draw() {
-		println();
+		//println();
 		background(255);
 		p.update();
 		for (int i = 0; i < enemies.size(); i++) {
@@ -50,6 +52,9 @@ public class DungeonGame extends PApplet {
 				projectiles.remove(i);
 			}
 		}
+
+		UI.showAbilityBar();
+		UI.showExpBar();
 	}
 
 	@Override

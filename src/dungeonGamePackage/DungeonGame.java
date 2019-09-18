@@ -45,8 +45,6 @@ public class DungeonGame extends PApplet{
 				projectiles.remove(i);
 			}
 		}
-
-
 	}
 
 	@Override

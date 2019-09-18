@@ -13,6 +13,7 @@ public class DungeonGame extends PApplet {
 	int currentZone;
 	ArrayList<Enemy> enemies;
 	ArrayList<Projectile> projectiles;
+	boolean bossHasSpawned;
 	public static void main(String[] args) {
 		PApplet.main("dungeonGamePackage.DungeonGame");
 	}
@@ -36,8 +37,9 @@ public class DungeonGame extends PApplet {
 	public void draw() {
 		background(255);
 		p.update();
-		if(enemies.size() == 0){
+		if(enemies.size() == 0 && !bossHasSpawned){
 			Utility.spawnBoss(new PVector(DG.width/2, DG.height/5));
+			bossHasSpawned = true;
 		}
 		
 		for (int i = 0; i < enemies.size(); i++) {

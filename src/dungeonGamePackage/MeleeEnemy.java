@@ -5,7 +5,7 @@ import static dungeonGamePackage.DungeonGame.DG;
 
 class MeleeEnemy extends Enemy {
 
-    MeleeEnemy(PVector position){
+    MeleeEnemy(PVector position) {
         this.position = position;
         lvl = DG.currentZone;
         color = DG.color(221, 33, 6);
@@ -22,29 +22,29 @@ class MeleeEnemy extends Enemy {
     }
 
     @Override
-    public void update(){
+    public void update() {
         display();
         checkAggro();
-        if (target != null){
+        if (target != null) {
             targetPosition = target.position;
             moveTowardsTargetPosition();
         }
     }
 
-    void onDeath(){
-     DG.p.exp += expReward;
+    void onDeath() {
+        DG.p.exp += expReward;
     }
 
     @Override
-    void attack(){
+    void attack() {
         DG.p.takeDamage(dmg);
         atkcdCurrent = atkcd;
     }
 
-    void checkPlayerCollision(){
-        if (PVector.dist(position, target.position) < radius + target.radius){
+    void checkPlayerCollision() {
+        if (PVector.dist(position, target.position) < radius + target.radius) {
             attack();
         }
     }
-    
-}   
+
+}

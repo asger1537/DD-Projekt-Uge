@@ -14,7 +14,8 @@ class Player extends MovingUnit {
         radius = 15;
         color = DG.color(36, 191, 83);
         dead = false;
-        hp = 100;
+        maxHp = 100;
+        hp = maxHp;
         lvl = 0;
         exp = 0;
         lookDirection = new PVector();

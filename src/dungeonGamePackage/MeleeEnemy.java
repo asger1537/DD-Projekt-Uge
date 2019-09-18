@@ -34,4 +34,17 @@ class MeleeEnemy extends Enemy {
     void onDeath(){
      DG.p.exp += expReward;
     }
+
+    @Override
+    void attack(){
+        DG.p.takeDamage(dmg);
+        atkcdCurrent = atkcd;
+    }
+
+    void checkPlayerCollision(){
+        if (PVector.dist(position, target.position) < radius + target.radius){
+            attack();
+        }
+    }
+    
 }   

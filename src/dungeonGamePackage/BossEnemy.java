@@ -9,7 +9,8 @@ class BossEnemy extends Enemy{
         this.position = position;
         lvl = DG.currentZone;
         color = DG.color(221, 33, 6);
-        ms = 3f;
+        msBase = 3f;
+        msBase = msCurrent;
         radius = 30;
         dead = false;
         maxHp = 300;

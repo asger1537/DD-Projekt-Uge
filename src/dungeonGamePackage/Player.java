@@ -41,6 +41,7 @@ class Player extends MovingUnit {
             moveTowardsTargetPosition();
         }
         setMouseDirection();
+        if(dead){onDeath();}
     }
 
     public void setMouseDirection() {
@@ -67,5 +68,9 @@ class Player extends MovingUnit {
     void expGet(int expGain) {
         exp += expGain;
         levelUp();
+    }
+
+    void onDeath(){
+     DG.setup();
     }
 }

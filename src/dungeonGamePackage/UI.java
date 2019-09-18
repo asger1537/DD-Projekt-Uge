@@ -57,6 +57,4 @@ class UI{
             DG.line(x, expBarY, x, expBarY + expBarHeight);
         }
     }
-
-
 }

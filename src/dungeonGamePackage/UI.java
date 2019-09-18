@@ -49,7 +49,7 @@ class UI{
     static void showExpBar(){
         DG.noFill();
         DG.rect(expBarX, expBarY, expBarLength, expBarHeight);//drawing the bar
-        DG.fill(88, 29, 169);
+        DG.fill(125, 0, 115);
         DG.rect(expBarX, expBarY, expBarLength*DG.p.exp/DG.p.expLevelUp, expBarHeight);    
         
         //dividing the expbar into 10 parts

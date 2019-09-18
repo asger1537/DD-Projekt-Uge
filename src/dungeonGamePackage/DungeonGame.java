@@ -39,6 +39,7 @@ public class DungeonGame extends PApplet{
 		for (int i = 0; i < enemies.size(); i++){
 			enemies.get(i).update();
 			if(enemies.get(i).dead){
+				enemies.get(i).onDeath();
 				enemies.remove(i);
 			}
 		}

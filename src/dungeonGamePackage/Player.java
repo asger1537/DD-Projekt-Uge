@@ -59,5 +59,6 @@ class Player extends MovingUnit {
 
     void expGet(int expGain) {
         exp+=expGain;
+        levelUp();
     }
 }

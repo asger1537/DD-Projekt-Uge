@@ -6,7 +6,8 @@ import processing.core.PVector;
 abstract class MovingUnit {
     PVector position;// center of unit
     PVector targetPosition;// the position the unit is moving towards
-    float ms;// movement speed
+    float msBase;
+    float msCurrent;
     float radius;
     int color;
     boolean dead;
@@ -35,8 +36,8 @@ abstract class MovingUnit {
         // the direction of the vector from position pointing to target position
         PVector dir = PVector.sub(targetPosition, position).normalize();
 
-        if (PVector.dist(position, targetPosition) > ms) {
-            position.add(PVector.mult(dir, ms));
+        if (PVector.dist(position, targetPosition) > msCurrent) {
+            position.add(PVector.mult(dir, msCurrent));
         } else {
             position = targetPosition.copy();
         }

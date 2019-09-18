@@ -27,7 +27,5 @@ abstract class Enemy extends MovingUnit {
     }
 
     void attack(){
-        DG.p.takeDamage(dmg);
-        atkcdCurrent = atkcd;
     }
 }

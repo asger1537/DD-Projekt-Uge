@@ -10,7 +10,8 @@ class Player extends MovingUnit {
     Player(){
         position = new PVector(DG.width/2f, DG.height*7f/8f);//middle bottom
         targetPosition = position.copy();
-        ms = 4f;
+        msBase = 4f;
+        msCurrent = msBase;
         radius = 15;
         color = DG.color(36, 191, 83);
         dead = false;

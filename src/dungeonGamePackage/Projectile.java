@@ -11,6 +11,7 @@ class Projectile {
     String[] canHit;
     float radius;
     int color;
+    boolean hit;
 
     Projectile(PVector position, PVector velocity, int dmg,
     String[] canHit, float radius, int color) {
@@ -26,7 +27,7 @@ class Projectile {
         move();
         checkEdgeCollision();
         checkUnitCollision();
-        onEdgeCollsion();
+        //onEdgeCollsion();
         display();
     }
 
@@ -53,39 +54,21 @@ class Projectile {
     }
 
     void onEnemyCollision(Enemy e){
-
+        e.takeDamage(dmg);
+        hit = true;
     }
 
     void onPlayerCollision(){
 
     }
 
-    boolean[] checkEdgeCollision() {
-        boolean xCollision = false;
-        boolean yCollision = false;
+    void checkEdgeCollision() { 
         if (position.x + radius >= DG.width || position.x - radius <= 0) {
-            xCollision = true;
-        } else {
-            xCollision = false;
+            hit = true;
         }
         if (position.y + radius >= DG.height || position.y - radius <= 0) {
-            yCollision = true;
-        } else {
-            yCollision = false;
-        }
-        return new boolean[] {xCollision,yCollision};
-    }
-
-    void onEdgeCollsion(){
-        //if it collides with the left and right walls reverse x-velocity
-        if(checkEdgeCollision()[0]){
-            velocity.x *= -1;
-        }
-
-        //if it collides with bottom and top walls reverse y-velocity
-        if(checkEdgeCollision()[1]){
-            velocity.y *= -1;
-        }
+            hit = true;
+        } 
     }
 
     void display(){

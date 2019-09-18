@@ -41,6 +41,9 @@ public class DungeonGame extends PApplet{
 
 		for (int i = 0; i < projectiles.size(); i++){
 			projectiles.get(i).update();
+			if(projectiles.get(i).hit){
+				projectiles.remove(i);
+			}
 		}
 
 

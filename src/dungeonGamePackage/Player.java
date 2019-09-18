@@ -8,7 +8,9 @@ class Player extends MovingUnit {
     PVector lookDirection;
     int expLevelUp;
     int levelUpHpIncrease;
-    int expLevelUpRequirement;
+    int expLevelUpRequirementIncrease;
+    int dmg;
+    int levelUpDmgIncrease;
 
     Player() {
         position = new PVector(DG.width / 2f, DG.height * 7f / 8f);// middle bottom
@@ -20,14 +22,16 @@ class Player extends MovingUnit {
         dead = false;
         maxHp = 100;
         hp = maxHp;
-        lvl = 0;
+        lvl = 1;
         exp = 0;
         lookDirection = new PVector();
         borderWidth = 1;
         healthBarLength = 50;
         expLevelUp = 60;
         levelUpHpIncrease = 50;
-        expLevelUpRequirement = 60;
+        expLevelUpRequirementIncrease = 60;
+        dmg = 20;
+        levelUpDmgIncrease = 10;
 
     }
 
@@ -45,22 +49,23 @@ class Player extends MovingUnit {
 
     public void attack() {
         DG.projectiles.add(new Projectile(PVector.add(position, PVector.mult(lookDirection, radius + 5)),
-                PVector.mult(lookDirection, 10), 20, new String[] { "Enemy" }, 5, DG.color(100)));
+                PVector.mult(lookDirection, 10), dmg, new String[] { "Enemy" }, 5, DG.color(100)));
     }
 
     void levelUp() {
         if (exp >= expLevelUp == true) {
             exp -= expLevelUp;
             lvl += 1;
-            expLevelUp += lvl*60;
+            expLevelUp += lvl * expLevelUpRequirementIncrease;
             maxHp += levelUpHpIncrease;
+            dmg += levelUpDmgIncrease;
             hp = maxHp;
         }
 
     }
 
     void expGet(int expGain) {
-        exp+=expGain;
+        exp += expGain;
         levelUp();
     }
 }

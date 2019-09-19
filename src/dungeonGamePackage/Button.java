@@ -15,20 +15,20 @@ class Button extends UIelement{
         this.h = h;
         this.color = color;
         this.borderWidth = 1;
-        hovered = false;
-        onClick = this.onClick;
+        this.hovered = false;
+        this.onClick = onClick;
     }
 
     @Override
     void update(){
         updateHovered();
-        show();
+        display();
         if (hovered){
             onHover();
         }
     }
 
-    void show(){
+    void display(){
         DG.fill(color);
         DG.strokeWeight(borderWidth);
         DG.rect(x, y, w, h);

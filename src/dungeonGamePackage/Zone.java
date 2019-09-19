@@ -76,6 +76,7 @@ class Zone {
         currentZone += 1;
         bossHasSpawned = false;
         levelCompleted = false;
+        DG.p.position = new PVector(DG.width / 2f, DG.height * 7f / 8f); // player is moved to middle bottom of the screen when a new level starts
         spawnZoneEnemies();
     }
 }

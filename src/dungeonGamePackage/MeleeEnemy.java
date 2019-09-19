@@ -25,16 +25,16 @@ class MeleeEnemy extends Enemy {
 
     @Override
     public void update() {
-        display();
+        display(position);
         checkAggro();
         if (target != null) {
             targetPosition = target.position;
             moveTowardsTargetPosition();
-    
-            if (atkcdCurrent > 1){
+
+            if (atkcdCurrent > 1) {
                 atkcdCurrent--;
                 msCurrent = msBase * 0.75f;
-            } else{
+            } else {
                 checkPlayerCollision();
                 msCurrent = msBase;
             }

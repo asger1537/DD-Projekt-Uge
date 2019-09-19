@@ -25,7 +25,7 @@ abstract class MovingUnit {
 
     void display() {
         showHealthBar();
-        showBarrel();
+        //showBarrel();
         DG.fill(color);
         Utility.circle(position, radius);
       

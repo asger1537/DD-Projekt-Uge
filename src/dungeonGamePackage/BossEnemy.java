@@ -4,7 +4,6 @@ import processing.core.PVector;
 import static dungeonGamePackage.DungeonGame.DG;
 
 class BossEnemy extends Enemy {
-    PVector targetDirection;
 
     BossEnemy(PVector position) {
         this.position = position;
@@ -22,7 +21,6 @@ class BossEnemy extends Enemy {
         atkcdCurrent = 0;
         expReward = 50;
         healthBarLength = 60;
-        targetDirection = new PVector();
     }
 
     @Override
@@ -34,19 +32,19 @@ class BossEnemy extends Enemy {
             if (atkcdCurrent > 1) {
                 atkcdCurrent--;
             } else {
-                setTargetdirection();
+                setlookDirection();
                 attack();
             }
         }
     }
 
-     void setTargetdirection() {
-        targetDirection = PVector.sub(targetPosition,position).normalize();
+     void setlookDirection() {
+        lookDirection = PVector.sub(targetPosition,position).normalize();
     }
 
      void attack() {
-        DG.projectiles.add(new Projectile(PVector.add(position, PVector.mult(targetDirection, radius + 10)),
-                PVector.mult(targetDirection, 10), 40, new String[] { "Player" }, 5, DG.color(206, 43, 34)));
+        DG.projectiles.add(new Projectile(PVector.add(position, PVector.mult(lookDirection, radius + 10)),
+                PVector.mult(lookDirection, 10), 40, new String[] { "Player" }, 5, DG.color(206, 43, 34)));
         atkcdCurrent = atkcd;
     }
 

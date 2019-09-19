@@ -5,7 +5,6 @@ import static dungeonGamePackage.DungeonGame.DG;
 
 class Player extends MovingUnit {
     int exp;// experience points
-    PVector lookDirection;
     int expLevelUp;
     int levelUpHpIncrease;
     int expLevelUpRequirementIncrease;
@@ -24,7 +23,6 @@ class Player extends MovingUnit {
         hp = maxHp;
         lvl = 1;
         exp = 0;
-        lookDirection = new PVector();
         borderWidth = 1;
         healthBarLength = 50;
         expLevelUp = 60;

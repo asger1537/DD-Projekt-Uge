@@ -9,12 +9,9 @@ class Utility {
         DG.ellipse(position.x, position.y, radius * 2, radius * 2);
     }
 
+    static int sign(float x){
         if (x < 0) return -1;
-    static int sign(float x) {
-        if (x < 0)
-            return -1;
-        if (x > 0)
-            return 1;
+        if (x > 0) return 1;
         return 0;
     }
 
@@ -40,6 +37,7 @@ class Utility {
 
     static void spawnZoneEnemies(PVector position) {
         int numEnemyPacks = DG.floor(DG.random(8, 12));
+
         }
     }
 

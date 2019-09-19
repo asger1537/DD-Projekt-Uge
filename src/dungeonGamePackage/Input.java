@@ -24,6 +24,12 @@ class Input{
         if (DG.mouseButton == DG.RIGHT){
             DG.p.attack();
         }
+
+        for (int i = 0; i < DG.currentScreen.buttons.size(); i++){
+            if (DG.currentScreen.buttons.get(i).hovered){
+                DG.currentScreen.buttons.get(i).onClick.use();    
+            }
+        }
     }
 
     public static void keyPressed(){

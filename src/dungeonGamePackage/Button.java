@@ -25,12 +25,15 @@ class Button extends UIelement{
         display();
         if (hovered){
             onHover();
+        } else{
+            borderWidth = 1;
         }
     }
 
     void display(){
         DG.fill(color);
         DG.strokeWeight(borderWidth);
+        DG.rectMode(DG.CENTER);
         DG.rect(x, y, w, h);
         DG.strokeWeight(1);
     }
@@ -40,7 +43,7 @@ class Button extends UIelement{
     }
 
     void updateHovered(){
-        hovered = DG.mouseX > x && DG.mouseX < x + w && DG.mouseY > y && DG.mouseY < y + h;
+        hovered = DG.mouseX > x - w/2f && DG.mouseX < x + w/2f + w && DG.mouseY > y - h/2f && DG.mouseY < y + h/2f;
     }
 
 

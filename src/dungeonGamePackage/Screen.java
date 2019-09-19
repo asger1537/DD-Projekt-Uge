@@ -3,15 +3,15 @@ package dungeonGamePackage;
 import java.util.ArrayList;
 
 class Screen {
-    ArrayList<UIelement> UIelements;
+    ArrayList<Button> buttons;
     
-    Screen(ArrayList<UIelement> UIelements){
-        this.UIelements = UIelements;
+    Screen(ArrayList<Button> buttons){
+        this.buttons = buttons;
     }
     
     void update(){
-        for (int i = 0; i < UIelements.size(); i++){
-            UIelements.get(i).update();
+        for (int i = 0; i < buttons.size(); i++){
+            buttons.get(i).update();
         }
     }
 

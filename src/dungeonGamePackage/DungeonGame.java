@@ -11,6 +11,7 @@ public class DungeonGame extends PApplet {
 	// global variables
 	Player p;
 	Zone zone;
+	Screen currentScreen;
 	ArrayList<Projectile> projectiles;
 
 	public static void main(String[] args) {
@@ -18,36 +19,22 @@ public class DungeonGame extends PApplet {
 	}
 
 	public void settings() {
-		// size(800, 800);
 		fullScreen();
 		DG = this;
 	}
 
 	public void setup() {
+		UI.initializeVariables();
+		currentScreen = UI.startMenu;
 		p = new Player();
 		zone = new Zone(2000f, 2000f);
 		projectiles = new ArrayList<Projectile>();
 		zone.spawnZoneEnemies();
-		UI.initializeVariables();
-
+		
 	}
 
 	public void draw() {
-		pushMatrix();
-
-		translate(width/2f-p.position.x, height/2f-p.position.y);
-		zone.update();
-		p.update();
-		for (int i = 0; i < projectiles.size(); i++) {
-			projectiles.get(i).update();
-			if (projectiles.get(i).hit) {
-				projectiles.remove(i);
-			}
-		}
-		popMatrix();
-
-		UI.showAbilityBar();
-		UI.showExpBar();
+		currentScreen.update();
 	}
 
 	@Override

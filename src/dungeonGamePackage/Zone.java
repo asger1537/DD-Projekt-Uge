@@ -110,5 +110,9 @@ class Zone {
         if (PVector.dist(portalPosition, DG.p.position) < portalRadius + DG.p.radius) {
             generateNewZone();
         }
+
+        DG.textAlign(DG.CENTER);
+        DG.fill(0);
+        DG.text(String.format("ZONE %d UNLOCKED", currentZone + 1), portalPosition.x, portalPosition.y - portalRadius*1.2f);
     }
 }

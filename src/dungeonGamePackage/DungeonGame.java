@@ -37,7 +37,6 @@ public class DungeonGame extends PApplet {
 	}
 
 	public void draw() {
-		println(frameRate);
 		currentScreen.update();
 	}
 

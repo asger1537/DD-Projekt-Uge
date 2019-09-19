@@ -54,10 +54,10 @@ abstract class MovingUnit {
 
     void showHealthBar() {
         String healthbarContent = hp + "/" + maxHp;
-        float healthPercent = (hp / maxHp) * 100;
+        float healthPercent = ((float)hp / (float)maxHp) * 100f;
         int healthBarColor = DG.color(0, 0, 0);
         if (healthPercent > 50) {
-            healthBarColor = DG.color((int) (255 - healthPercent * 2.55), 255, 0);
+            healthBarColor = DG.color((int) 2*(-2.55f*healthPercent + 255), 255, 0);
         }
         if (healthPercent <= 50) {
             healthBarColor = DG.color(255, (int) (healthPercent * 2.55), 0);

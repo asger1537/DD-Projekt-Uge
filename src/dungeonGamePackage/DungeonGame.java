@@ -2,9 +2,8 @@ package dungeonGamePackage;
 
 import java.util.ArrayList;
 
-import dungeonGamePackage.UI.ClickInterface;
 import processing.core.PApplet;
-import processing.core.PVector;
+import processing.core.PImage;
 
 public class DungeonGame extends PApplet {
 	public static DungeonGame DG;
@@ -14,6 +13,7 @@ public class DungeonGame extends PApplet {
 	Zone zone;
 	Screen currentScreen;
 	ArrayList<Projectile> projectiles;
+	PImage portal;
 
 	public static void main(String[] args) {
 		PApplet.main("dungeonGamePackage.DungeonGame");
@@ -31,7 +31,7 @@ public class DungeonGame extends PApplet {
 		zone = new Zone(2000f, 2000f);
 		projectiles = new ArrayList<Projectile>();
 		zone.spawnZoneEnemies();
-		
+		portal = loadImage("Portal.png");
 	}
 
 	public void draw() {

@@ -61,30 +61,14 @@ class Projectile {
         hit = true;
     }
 
-    boolean[] checkEdgeCollision() {
-        boolean xCollision = false;
-        boolean yCollision = false;
-        if (position.x + radius >= DG.width || position.x - radius <= 0) {
-            xCollision = true;
-        } else {
-            xCollision = false;
+    void checkEdgeCollision() {
+        if (position.x + radius >= DG.zone.width || position.x - radius <= 0 || position.y + radius >= DG.zone.height || position.y - radius <= 0) {
+            onEdgeCollision();
         }
-        if (position.y + radius >= DG.height || position.y - radius <= 0) {
-            yCollision = true;
-        } else {
-            yCollision = false;
-        }
-        return new boolean[] { xCollision, yCollision };
     }
 
-    void onEdgeCollsion() {
-        if (checkEdgeCollision()[0]) {
-            hit = true;
-        }
-
-        if (checkEdgeCollision()[1]) {
-            hit = true;
-        }
+    void onEdgeCollision() {
+        hit = true;
     }
 
     void display() {

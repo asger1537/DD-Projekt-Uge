@@ -10,7 +10,7 @@ class UI{
     static float expBarX, expBarY, expBarLength, expBarHeight;
     static String[] keybinds;
 
-    static Screen startMenu, gameScreen;
+    static Screen startMenu, gameScreen, deathScreen;
 
 
     static void initializeVariables(){
@@ -32,7 +32,7 @@ class UI{
 
         gameScreen = new Screen(new ArrayList<Button>()){
             @Override 
-            void update(){
+            void display(){
                 DG.pushMatrix();
                 DG.translate(DG.width/2f-DG.p.position.x, DG.height/2f-DG.p.position.y);
                 DG.zone.update();
@@ -50,11 +50,27 @@ class UI{
             }
         };
 
-        ArrayList<Button> startMenuElements = new ArrayList<Button>();
+        
         
         ClickInterface startButtonOnClick = () -> DG.currentScreen = gameScreen; 
-        startMenuElements.add(new TextButton(DG.width/2, DG.height/2, 100f, 25, DG.color(128), "START", DG.color(0), 18, startButtonOnClick));
-        startMenu = new Screen(startMenuElements);
+        ArrayList<Button> startMenuButtons = new ArrayList<Button>();
+        startMenuButtons.add(new TextButton(DG.width/2, DG.height/2, 100f, 25, DG.color(128), "START", DG.color(0), 18, startButtonOnClick));
+        startMenu = new Screen(startMenuButtons);
+
+
+        ClickInterface restartButtonOnClick = () -> DG.setup();
+        ArrayList<Button> deathScreenButtons = new ArrayList<Button>();
+        deathScreenButtons.add(new TextButton(DG.width/2, DG.height/2, 200f, 25, DG.color(128), "GO START MENU", DG.color(0), 18, restartButtonOnClick));
+        deathScreen = new Screen(deathScreenButtons){
+            @Override 
+            void display(){
+                DG.background(128);
+                DG.textAlign(DG.CENTER);
+                DG.textSize(50);
+                DG.fill(234, 0, 0);
+                DG.text("YOU DIED", DG.width/2f, DG.height*0.3f);
+            }
+        };
     }
 
 
@@ -62,22 +78,21 @@ class UI{
         DG.rectMode(DG.CORNER);
         int keybindIdx = 0;
         for (float x = abilityBarX; x < abilityBarX + abilityBarLength; x += abilityBarLength/5f){
-            DG.noFill();
+            DG.fill(50, 128);
             DG.rect(x, abilityBarY, abilityBarHeight, abilityBarHeight);
             DG.rect(x, abilityBarY + abilityBarHeight, abilityBarHeight, abilityBarTextHeight);
             String keybind = keybinds[keybindIdx];
             DG.textSize(25);
             DG.textAlign(DG.CENTER);
-            DG.fill(50);
+            DG.fill(10);
             DG.text(keybind, x+abilityBarHeight/2, DG.height-abilityBarTextHeight/10f);
             keybindIdx++;
-            //To do - add keybind text
         }
     }
 
     static void showExpBar(){
         DG.rectMode(DG.CORNER);
-        DG.noFill();
+        DG.fill(50, 128);
         DG.rect(expBarX, expBarY, expBarLength, expBarHeight);//drawing the bar
         DG.fill(125, 0, 115);
         DG.rect(expBarX, expBarY, expBarLength*DG.p.exp/DG.p.expLevelUp, expBarHeight);    

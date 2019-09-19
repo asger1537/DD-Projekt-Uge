@@ -71,6 +71,6 @@ class Player extends MovingUnit {
     }
 
     void onDeath() {
-        DG.setup();
+        DG.currentScreen = UI.deathScreen;
     }
 }

@@ -104,6 +104,7 @@ class Zone {
         int portalRadius = DG.width/10;
         PVector portalPosition = new PVector(DG.width/2,DG.height/5);
         DG.fill(0,0,255);
+        DG.imageMode(DG.CENTER);
         DG.image(DG.portal, portalPosition.x, portalPosition.y);
         if (PVector.dist(portalPosition, DG.p.position) < portalRadius + DG.p.radius) {
             generateNewZone();

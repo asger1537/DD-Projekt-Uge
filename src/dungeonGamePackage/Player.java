@@ -10,6 +10,7 @@ class Player extends MovingUnit {
     int expLevelUpRequirementIncrease;
     int dmg;
     int levelUpDmgIncrease;
+    int levelUpTextTime;
 
     Player() {
         position = new PVector(DG.width / 2f, DG.height * 7f / 8f);// middle bottom
@@ -30,7 +31,7 @@ class Player extends MovingUnit {
         expLevelUpRequirementIncrease = 60;
         dmg = 20;
         levelUpDmgIncrease = 10;
-
+        levelUpTextTime = 0;
     }
 
     public void update() {
@@ -41,6 +42,12 @@ class Player extends MovingUnit {
         setMouseDirection();
         if (dead) {
             onDeath();
+        }
+        if (levelUpTextTime > 0){
+            DG.textSize(30);
+            DG.fill(255, 185, 55);
+            DG.text("LEVEL UP!", position.x, position.y-50);
+            levelUpTextTime--;
         }
     }
 
@@ -54,20 +61,21 @@ class Player extends MovingUnit {
     }
 
     void levelUp() {
-        if (exp >= expLevelUp == true) {
-            exp -= expLevelUp;
-            lvl += 1;
-            expLevelUp += lvl * expLevelUpRequirementIncrease;
-            maxHp += levelUpHpIncrease;
-            dmg += levelUpDmgIncrease;
-            hp = maxHp;
-        }
-
+        exp -= expLevelUp;
+        lvl += 1;
+        expLevelUp += lvl * expLevelUpRequirementIncrease;
+        maxHp += levelUpHpIncrease;
+        dmg += levelUpDmgIncrease;
+        hp = maxHp;
+        
+        levelUpTextTime = 120;
     }
 
     void expGet(int expGain) {
         exp += expGain;
-        levelUp();
+        if (exp >= expLevelUp) {
+            levelUp();
+        }
     }
 
     void onDeath() {

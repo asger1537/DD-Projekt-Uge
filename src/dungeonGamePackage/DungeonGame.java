@@ -2,6 +2,7 @@ package dungeonGamePackage;
 
 import java.util.ArrayList;
 
+import dungeonGamePackage.UI.ClickInterface;
 import processing.core.PApplet;
 import processing.core.PVector;
 
@@ -29,7 +30,6 @@ public class DungeonGame extends PApplet {
 		projectiles = new ArrayList<Projectile>();
 		zone.spawnZoneEnemies();
 		UI.initializeVariables();
-
 	}
 
 	public void draw() {

@@ -34,7 +34,7 @@ class UI{
             @Override 
             void display(){
                 DG.pushMatrix();
-                DG.translate(DG.width/2f-DG.p.position.x, DG.height/2f-DG.p.position.y);
+                DG.translate((int)(DG.width/2f-DG.p.position.x), (int)(DG.height/2f-DG.p.position.y));
                 DG.zone.update();
                 DG.p.update();
                 for (int i = 0; i < DG.projectiles.size(); i++) {

@@ -13,13 +13,13 @@ class MeleeEnemy extends Enemy {
         msCurrent = msBase;
         radius = 10;
         dead = false;
-        maxHp = 100;
+        maxHp = 50+50*lvl;
         hp = maxHp;
         agroRange = 200;
-        dmg = 10;
+        dmg = 10*lvl;
         atkcd = 60;
         atkcdCurrent = 0;
-        expReward = 20;
+        expReward = 10*lvl;
         healthBarLength = 30;
     }
 

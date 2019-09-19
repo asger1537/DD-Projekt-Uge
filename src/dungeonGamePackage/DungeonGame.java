@@ -14,12 +14,13 @@ public class DungeonGame extends PApplet {
 	ArrayList<Enemy> enemies;
 	ArrayList<Projectile> projectiles;
 	boolean bossHasSpawned;
+
 	public static void main(String[] args) {
 		PApplet.main("dungeonGamePackage.DungeonGame");
 	}
 
 	public void settings() {
-		//size(800, 800);
+		// size(800, 800);
 		fullScreen();
 		DG = this;
 	}
@@ -37,11 +38,11 @@ public class DungeonGame extends PApplet {
 	public void draw() {
 		background(255);
 		p.update();
-		if(enemies.size() == 0 && !bossHasSpawned){
-			Utility.spawnBoss(new PVector(DG.width/2, DG.height/5));
+		if (enemies.size() == 0 && !bossHasSpawned) {
+			Utility.spawnBoss(new PVector(DG.width / 2, DG.height / 5));
 			bossHasSpawned = true;
 		}
-		
+
 		for (int i = 0; i < enemies.size(); i++) {
 			enemies.get(i).update();
 			if (enemies.get(i).dead) {
@@ -49,7 +50,7 @@ public class DungeonGame extends PApplet {
 				enemies.remove(i);
 			}
 		}
-		
+
 		for (int i = 0; i < projectiles.size(); i++) {
 			projectiles.get(i).update();
 			if (projectiles.get(i).hit) {

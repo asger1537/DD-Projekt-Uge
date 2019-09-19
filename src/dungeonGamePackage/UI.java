@@ -42,8 +42,6 @@ class UI{
             keybindIdx++;
             //To do - add keybind text
         }
-
-
     }
 
     static void showExpBar(){
@@ -56,5 +54,10 @@ class UI{
         for (float x = expBarX; x < expBarX+expBarLength; x += expBarLength/10f){
             DG.line(x, expBarY, x, expBarY + expBarHeight);
         }
+    }
+
+    @FunctionalInterface
+    interface ClickInterface{ 
+        void use(); 
     }
 }

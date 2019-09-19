@@ -25,7 +25,7 @@ class BossEnemy extends Enemy {
 
     @Override
     public void update() {
-        display();
+        display(position);
         checkAggro();
         if (target != null) {
             targetPosition = target.position;
@@ -38,11 +38,11 @@ class BossEnemy extends Enemy {
         }
     }
 
-     void setlookDirection() {
-        lookDirection = PVector.sub(targetPosition,position).normalize();
+    void setlookDirection() {
+        lookDirection = PVector.sub(targetPosition, position).normalize();
     }
 
-     void attack() {
+    void attack() {
         DG.projectiles.add(new Projectile(PVector.add(position, PVector.mult(lookDirection, radius + 10)),
                 PVector.mult(lookDirection, 10), 40, new String[] { "Player" }, 5, DG.color(206, 43, 34)));
         atkcdCurrent = atkcd;
@@ -50,6 +50,6 @@ class BossEnemy extends Enemy {
 
     void onDeath() {
         DG.p.expGet(expReward);
-        //todo go to next level or spawn a portal to next level
+        // todo go to next level or spawn a portal to next level
     }
 }

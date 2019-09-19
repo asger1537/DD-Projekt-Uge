@@ -34,12 +34,14 @@ class Player extends MovingUnit {
     }
 
     public void update() {
-         display();
+        playerDisplay();
         if (position != targetPosition) {
             moveTowardsTargetPosition();
         }
         setMouseDirection();
-        if(dead){onDeath();}
+        if (dead) {
+            onDeath();
+        }
     }
 
     public void setMouseDirection() {
@@ -49,6 +51,13 @@ class Player extends MovingUnit {
     public void attack() {
         DG.projectiles.add(new Projectile(PVector.add(position, PVector.mult(lookDirection, radius + 5)),
                 PVector.mult(lookDirection, 10), dmg, new String[] { "Enemy" }, 5, DG.color(100)));
+    }
+
+    void playerDisplay() {
+        showHealthBar(new PVector(DG.width / 2, DG.height / 2));
+        DG.fill(color);
+        Utility.circle(new PVector(DG.width / 2, DG.height / 2), radius);
+
     }
 
     void levelUp() {
@@ -68,7 +77,7 @@ class Player extends MovingUnit {
         levelUp();
     }
 
-    void onDeath(){
-     DG.setup();
+    void onDeath() {
+        DG.setup();
     }
 }

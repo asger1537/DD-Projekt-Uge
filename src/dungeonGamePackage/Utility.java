@@ -35,9 +35,16 @@ class Utility {
         }
     }
 
-    static void spawnZoneEnemies(PVector position) {
+    static void spawnZoneEnemies() {
         int numEnemyPacks = DG.floor(DG.random(8, 12));
-
+        PVector spawnPosition;
+        int maxDistance;
+        
+        for (int i = 0; i < numEnemyPacks; i++) {
+        int x = (int)DG.random(10,DG.width-10);
+        int y = (int)DG.random(DG.height/4,DG.height-DG.height/4);
+        spawnPosition = new PVector(x,y);
+        spawnEnemyCluster(spawnPosition);
         }
     }
 

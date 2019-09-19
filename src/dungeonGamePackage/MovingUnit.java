@@ -23,12 +23,15 @@ abstract class MovingUnit {
     float barrelLength;
     float barrelWidth;
 
-    void display() {
-        showHealthBar();
-        showBarrel();
+    void display(PVector position) {
+        DG.pushMatrix();
+        DG.translate(DG.p.position.x, DG.p.position.y);
+        showHealthBar(position);
+        // showBarrel();
         DG.fill(color);
         Utility.circle(position, radius);
-      
+        DG.popMatrix();
+
     }
 
     void takeDamage(int d) {
@@ -53,7 +56,7 @@ abstract class MovingUnit {
     void onDeath() {
     }
 
-    void showHealthBar() {
+    void showHealthBar(PVector position) {
         String healthbarContent = hp + "/" + maxHp;
         float healthPercent = (hp / maxHp) * 100;
         int healthBarColor = DG.color(0, 0, 0);
@@ -81,20 +84,20 @@ abstract class MovingUnit {
 
     void showBarrel() {
         DG.fill(0);
-		// drawing the barrel
-		DG.beginShape();
-		PVector v1 = PVector.add(position, new PVector(-lookDirection.y, lookDirection.x).mult(barrelWidth));
-		PVector v2 = PVector.add(position, new PVector(lookDirection.y, -lookDirection.x).mult(barrelWidth));
-		PVector v3 = PVector.add(v2, PVector.mult(lookDirection, barrelLength));
-		PVector v4 = PVector.add(v1, PVector.mult(lookDirection, barrelLength));
-		DG.pushMatrix();
-		DG.translate(position.x, position.y);
-		DG.vertex(v1.x, v1.y);
-		DG.vertex(v2.x, v2.y);
-		DG.vertex(v3.x, v3.y);
-		DG.vertex(v4.x, v4.y);
-		DG.endShape(2);
-		DG.popMatrix();
-        
+        // drawing the barrel
+        DG.beginShape();
+        PVector v1 = PVector.add(position, new PVector(-lookDirection.y, lookDirection.x).mult(barrelWidth));
+        PVector v2 = PVector.add(position, new PVector(lookDirection.y, -lookDirection.x).mult(barrelWidth));
+        PVector v3 = PVector.add(v2, PVector.mult(lookDirection, barrelLength));
+        PVector v4 = PVector.add(v1, PVector.mult(lookDirection, barrelLength));
+        DG.pushMatrix();
+        DG.translate(position.x, position.y);
+        DG.vertex(v1.x, v1.y);
+        DG.vertex(v2.x, v2.y);
+        DG.vertex(v3.x, v3.y);
+        DG.vertex(v4.x, v4.y);
+        DG.endShape(2);
+        DG.popMatrix();
+
     }
 }

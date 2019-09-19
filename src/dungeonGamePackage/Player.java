@@ -34,7 +34,7 @@ class Player extends MovingUnit {
     }
 
     public void update() {
-        playerDisplay();
+        display();
         if (position != targetPosition) {
             moveTowardsTargetPosition();
         }
@@ -51,13 +51,6 @@ class Player extends MovingUnit {
     public void attack() {
         DG.projectiles.add(new Projectile(PVector.add(position, PVector.mult(lookDirection, radius + 5)),
                 PVector.mult(lookDirection, 10), dmg, new String[] { "Enemy" }, 5, DG.color(100)));
-    }
-
-    void playerDisplay() {
-        showHealthBar(new PVector(DG.width / 2, DG.height / 2));
-        DG.fill(color);
-        Utility.circle(new PVector(DG.width / 2, DG.height / 2), radius);
-
     }
 
     void levelUp() {

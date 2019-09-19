@@ -2,7 +2,6 @@ package dungeonGamePackage;
 
 import static dungeonGamePackage.DungeonGame.DG;
 import processing.core.PVector;
-import sun.util.resources.cldr.kk.LocaleNames_kk;
 
 abstract class MovingUnit {
     PVector position;// center of unit
@@ -23,14 +22,11 @@ abstract class MovingUnit {
     float barrelLength;
     float barrelWidth;
 
-    void display(PVector position) {
-       // DG.pushMatrix();
-        //DG.translate(DG.p.position.x, DG.p.position.y);
-        showHealthBar(position);
+    void display() {
+        showHealthBar();
         // showBarrel();
         DG.fill(color);
         Utility.circle(position, radius);
-        //DG.popMatrix();
 
     }
 
@@ -56,7 +52,7 @@ abstract class MovingUnit {
     void onDeath() {
     }
 
-    void showHealthBar(PVector position) {
+    void showHealthBar() {
         String healthbarContent = hp + "/" + maxHp;
         float healthPercent = (hp / maxHp) * 100;
         int healthBarColor = DG.color(0, 0, 0);
@@ -90,13 +86,13 @@ abstract class MovingUnit {
         PVector v2 = PVector.add(position, new PVector(lookDirection.y, -lookDirection.x).mult(barrelWidth));
         PVector v3 = PVector.add(v2, PVector.mult(lookDirection, barrelLength));
         PVector v4 = PVector.add(v1, PVector.mult(lookDirection, barrelLength));
-        DG.pushMatrix();
-        DG.translate(position.x, position.y);
+        //DG.pushMatrix();
+        //DG.translate(position.x, position.y);
         DG.vertex(v1.x, v1.y);
         DG.vertex(v2.x, v2.y);
         DG.vertex(v3.x, v3.y);
         DG.vertex(v4.x, v4.y);
-        DG.endShape(2);
-        DG.popMatrix();
+        //DG.endShape(2);
+        //DG.popMatrix();
     }
 }

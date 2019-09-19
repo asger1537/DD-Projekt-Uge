@@ -10,7 +10,7 @@ class BossEnemy extends Enemy {
         lvl = DG.zone.currentZone;
         color = DG.color(221, 33, 6);
         msBase = 3f;
-        msBase = msCurrent;
+        msCurrent = msBase;
         radius = 30;
         dead = false;
         maxHp = 300;
@@ -25,7 +25,7 @@ class BossEnemy extends Enemy {
 
     @Override
     public void update() {
-        display(position);
+        display();
         checkAggro();
         if (target != null) {
             targetPosition = target.position;

@@ -13,13 +13,13 @@ class BossEnemy extends Enemy {
         msCurrent = msBase;
         radius = 30;
         dead = false;
-        maxHp = 300;
+        maxHp = 300*lvl;
         hp = maxHp;
-        agroRange = 100;
-        dmg = 20;
-        atkcd = 60;
+        agroRange = 600;
+        dmg = 30*lvl;
+        atkcd = 60/lvl;
         atkcdCurrent = 0;
-        expReward = 50;
+        expReward = 50*lvl;
         healthBarLength = 60;
     }
 

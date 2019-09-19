@@ -44,8 +44,8 @@ class Player extends MovingUnit {
         }
     }
 
-    public void setMouseDirection() {
-        lookDirection = PVector.sub(new PVector(DG.mouseX, DG.mouseY), position).normalize();
+    public void setMouseDirection() {        
+        lookDirection = PVector.sub(new PVector(DG.mouseX, DG.mouseY), new PVector(DG.width/2f, DG.height/2f)).normalize();
     }
 
     public void attack() {

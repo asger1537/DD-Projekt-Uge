@@ -7,11 +7,17 @@ import processing.core.PVector;
 class Input{
 
     public static void mousePressed(){
+
+        float mx, my;
+        //reverting the translation
+        mx = DG.mouseX -DG.width/2f + DG.p.position.x;
+        my = DG.mouseY -DG.height/2f + DG.p.position.y;
+
         //set target position on left click
         if (DG.mouseButton == DG.LEFT){
-            if (DG.mouseX > DG.p.radius && DG.mouseX < DG.width-DG.p.radius &&
-                DG.mouseY > DG.p.radius && DG.mouseY < DG.height-DG.p.radius){
-                    DG.p.targetPosition = new PVector(DG.mouseX, DG.mouseY);
+            if (mx > DG.p.radius && mx < DG.zone.width - DG.p.radius &&
+                my > DG.p.radius && my < DG.zone.height - DG.p.radius){
+                    DG.p.targetPosition = new PVector(mx, my);
                 }
         }
         //shoot

@@ -50,6 +50,5 @@ class BossEnemy extends Enemy {
 
     void onDeath() {
         DG.p.expGet(expReward);
-        DG.zone.generateNewZone();
     }
 }

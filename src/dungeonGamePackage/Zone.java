@@ -54,7 +54,7 @@ class Zone {
     }
 
     void spawnZoneEnemies() {
-        int numEnemyPacks = DG.floor(DG.random(8, 12));
+        int numEnemyPacks = DG.floor(DG.random(1,2));
         PVector spawnPosition;
         int maxDistance;
 
@@ -77,6 +77,9 @@ class Zone {
             spawnBoss(new PVector(DG.width / 2, DG.height / 5));
             bossHasSpawned = true;
         }
+        if(levelCompleted){
+            portalTonextLevel();
+        }
         if(enemies.size() == 0 && bossHasSpawned){
             levelCompleted = true;
         }
@@ -95,5 +98,15 @@ class Zone {
         levelCompleted = false;
         DG.p.position = new PVector(DG.width / 2f, DG.height * 7f / 8f); // player is moved to middle bottom of the screen when a new level starts
         spawnZoneEnemies();
+    }
+
+    void portalTonextLevel(){
+        int portalRadius = DG.width/10;
+        PVector portalPosition = new PVector(DG.width/2,DG.height/5);
+        DG.fill(0,0,255);
+        Utility.circle(portalPosition, portalRadius);
+        if (PVector.dist(portalPosition, DG.p.position) < portalRadius + DG.p.radius) {
+            generateNewZone();
+        }
     }
 }

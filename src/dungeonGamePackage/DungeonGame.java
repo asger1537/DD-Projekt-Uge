@@ -2,6 +2,7 @@ package dungeonGamePackage;
 
 import java.util.ArrayList;
 
+import dungeonGamePackage.UI.ClickInterface;
 import processing.core.PApplet;
 import processing.core.PVector;
 

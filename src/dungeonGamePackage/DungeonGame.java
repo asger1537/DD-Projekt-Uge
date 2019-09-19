@@ -10,10 +10,8 @@ public class DungeonGame extends PApplet {
 
 	// global variables
 	Player p;
-	int currentZone;
-	ArrayList<Enemy> enemies;
+	Zone zone;
 	ArrayList<Projectile> projectiles;
-	boolean bossHasSpawned;
 
 	public static void main(String[] args) {
 		PApplet.main("dungeonGamePackage.DungeonGame");
@@ -27,10 +25,9 @@ public class DungeonGame extends PApplet {
 
 	public void setup() {
 		p = new Player();
-		currentZone = 0;
-		enemies = new ArrayList<Enemy>();
+		zone = new Zone();
 		projectiles = new ArrayList<Projectile>();
-		Utility.spawnZoneEnemies();
+		zone.spawnZoneEnemies();
 		UI.initializeVariables();
 
 	}
@@ -38,19 +35,7 @@ public class DungeonGame extends PApplet {
 	public void draw() {
 		background(255);
 		p.update();
-		if (enemies.size() == 0 && !bossHasSpawned) {
-			Utility.spawnBoss(new PVector(DG.width / 2, DG.height / 5));
-			bossHasSpawned = true;
-		}
-
-		for (int i = 0; i < enemies.size(); i++) {
-			enemies.get(i).update();
-			if (enemies.get(i).dead) {
-				enemies.get(i).onDeath();
-				enemies.remove(i);
-			}
-		}
-
+		zone.update();
 		for (int i = 0; i < projectiles.size(); i++) {
 			projectiles.get(i).update();
 			if (projectiles.get(i).hit) {

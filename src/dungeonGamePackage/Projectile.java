@@ -35,8 +35,8 @@ class Projectile {
 
     void checkUnitCollision() {
         if (Utility.contains(canHit, "Enemy")) {
-            for (int i = 0; i < DG.enemies.size(); i++) {
-                Enemy e = DG.enemies.get(i);
+            for (int i = 0; i < DG.zone.enemies.size(); i++) {
+                Enemy e = DG.zone.enemies.get(i);
                 if (PVector.dist(position, e.position) < radius + e.radius) {
                     onEnemyCollision(e);
                     break;

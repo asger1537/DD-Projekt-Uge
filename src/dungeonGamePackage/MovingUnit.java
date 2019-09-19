@@ -24,13 +24,13 @@ abstract class MovingUnit {
     float barrelWidth;
 
     void display(PVector position) {
-        DG.pushMatrix();
-        DG.translate(DG.p.position.x, DG.p.position.y);
+       // DG.pushMatrix();
+        //DG.translate(DG.p.position.x, DG.p.position.y);
         showHealthBar(position);
         // showBarrel();
         DG.fill(color);
         Utility.circle(position, radius);
-        DG.popMatrix();
+        //DG.popMatrix();
 
     }
 
@@ -98,6 +98,5 @@ abstract class MovingUnit {
         DG.vertex(v4.x, v4.y);
         DG.endShape(2);
         DG.popMatrix();
-
     }
 }

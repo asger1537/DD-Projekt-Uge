@@ -9,13 +9,16 @@ class Zone {
     boolean levelCompleted;
     int currentZone;
     ArrayList<Enemy> enemies;
+    boolean bossHasSpawned;
 
-     void initializeZoneVariables() {
+        Zone() {
         currentZone = 1;
         enemies = new ArrayList<Enemy>();
+        bossHasSpawned = false;
+        levelCompleted = false;
     }
 
-    static void spawnEnemyCluster(PVector position) {
+    void spawnEnemyCluster(PVector position) {
         int numEnemies = DG.floor(DG.random(3, 6));
         PVector spawnVector = new PVector(30, 0);
 
@@ -31,11 +34,11 @@ class Zone {
                 spawnPosition = PVector.add(position, spawnVector);
             }
             spawnVector.rotate(2 * DG.PI / numEnemies * DG.random(0.8f, 1.2f));
-            DG.enemies.add(new MeleeEnemy(spawnPosition));
+            enemies.add(new MeleeEnemy(spawnPosition));
         }
     }
 
-    static void spawnZoneEnemies() {
+    void spawnZoneEnemies() {
         int numEnemyPacks = DG.floor(DG.random(8, 12));
         PVector spawnPosition;
         int maxDistance;
@@ -48,12 +51,31 @@ class Zone {
         }
     }
 
-    static void spawnBoss(PVector spawnPosition) {
-        DG.enemies.add(new BossEnemy(spawnPosition));
+    void spawnBoss(PVector spawnPosition) {
+        enemies.add(new BossEnemy(spawnPosition));
     }
 
-    void update(){
-        
+    void update() {
+        if (enemies.size() == 0 && !bossHasSpawned) {
+            spawnBoss(new PVector(DG.width / 2, DG.height / 5));
+            bossHasSpawned = true;
+        }
+        if(enemies.size() == 0 && bossHasSpawned){
+            levelCompleted = true;
+        }
+        for (int i = 0; i < enemies.size(); i++) {
+            enemies.get(i).update();
+            if (enemies.get(i).dead) {
+                enemies.get(i).onDeath();
+                enemies.remove(i);
+            }
+        }
     }
 
+    void generateNewZone(){
+        currentZone += 1;
+        bossHasSpawned = false;
+        levelCompleted = false;
+        spawnZoneEnemies();
+    }
 }

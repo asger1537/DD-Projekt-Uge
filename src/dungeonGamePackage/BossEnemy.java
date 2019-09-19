@@ -7,7 +7,7 @@ class BossEnemy extends Enemy {
 
     BossEnemy(PVector position) {
         this.position = position;
-        lvl = DG.currentZone;
+        lvl = DG.zone.currentZone;
         color = DG.color(221, 33, 6);
         msBase = 3f;
         msBase = msCurrent;
@@ -50,6 +50,6 @@ class BossEnemy extends Enemy {
 
     void onDeath() {
         DG.p.expGet(expReward);
-        // todo go to next level or spawn a portal to next level
+        DG.zone.generateNewZone();
     }
 }

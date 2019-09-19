@@ -7,7 +7,7 @@ class MeleeEnemy extends Enemy {
 
     MeleeEnemy(PVector position) {
         this.position = position;
-        lvl = DG.currentZone;
+        lvl = DG.zone.currentZone;
         color = DG.color(221, 33, 6);
         msBase = 3f;
         msCurrent = msBase;

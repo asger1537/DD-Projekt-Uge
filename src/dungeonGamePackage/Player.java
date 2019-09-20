@@ -32,44 +32,46 @@ class Player extends MovingUnit {
         dmg = 5;
         levelUpDmgIncrease = 10;
         levelUpTextTime = 0;
-        barrelLength = radius*3;
-        barrelWidth = radius/2;
+        barrelLength = radius * 3;
+        barrelWidth = radius / 2;
         barrelLongSide = new PVector();
         barrelShortSide = new PVector();
-        atkcd = 10/lvl;
+        atkcd = 10 / lvl;
         atkcdCurrent = 0;
 
     }
 
     public void update() {
+        if (atkcdCurrent > 0)
+            atkcdCurrent--;
         setMouseDirection();
         showBarrel();
         display();
         if (position != targetPosition) {
             moveTowardsTargetPosition();
         }
-       
+
         if (dead) {
             onDeath();
         }
-        if (levelUpTextTime > 0){
+        if (levelUpTextTime > 0) {
             DG.textSize(30);
             DG.fill(255, 185, 55);
-            DG.text("LEVEL UP!", position.x, position.y-50);
+            DG.text("LEVEL UP!", position.x, position.y - 50);
             levelUpTextTime--;
         }
     }
 
-    public void setMouseDirection() {        
-        lookDirection = PVector.sub(new PVector(DG.mouseX, DG.mouseY), new PVector(DG.width/2f, DG.height/2f)).normalize();
+    public void setMouseDirection() {
+        lookDirection = PVector.sub(new PVector(DG.mouseX, DG.mouseY), new PVector(DG.width / 2f, DG.height / 2f))
+                .normalize();
     }
 
     public void attack() {
-        if (atkcdCurrent>1) atkcdCurrent --;
-        else {
-        DG.projectiles.add(new Projectile(PVector.add(position, barrelLongSide),
-                PVector.mult(lookDirection, 10), dmg, new String[] { "Enemy" }, 5, DG.color(100)));
-                atkcdCurrent = atkcd;
+        if (atkcdCurrent == 0 == true) {
+            DG.projectiles.add(new Projectile(PVector.add(position, barrelLongSide), PVector.mult(lookDirection, 10),
+                    dmg, new String[] { "Enemy" }, 5, DG.color(100)));
+            atkcdCurrent = atkcd;
         }
     }
 
@@ -80,7 +82,7 @@ class Player extends MovingUnit {
         maxHp += levelUpHpIncrease;
         dmg += levelUpDmgIncrease;
         hp = maxHp;
-        
+
         levelUpTextTime = 120;
     }
 

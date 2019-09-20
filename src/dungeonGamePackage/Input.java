@@ -38,7 +38,7 @@ class Input{
             Abilities.chainLightningShot.use();
         } 
         if (DG.key == 'w'){
-            
+            Abilities.piercingProjectile.use();
         }
         if (DG.key == 'e'){
             

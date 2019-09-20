@@ -3,10 +3,32 @@ package dungeonGamePackage;
 //A collection of the ability anonymous classes 
 import static dungeonGamePackage.DungeonGame.DG;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 import processing.core.PVector;
 
 class Abilities {
+    static Ability piercingProjectile = new Ability(0.05f,100){
+        @Override
+        void use() {
+            DG.projectiles.add(new Projectile(PVector.add(DG.p.position, DG.p.barrelLongSide),
+                    PVector.mult(DG.p.lookDirection, 10f), (int) (scaling * DG.p.dmg), new String[] { "Enemy" }, 40,
+                    DG.color(0,0,255)) {
+                        
+                HashSet<Enemy> alreadyhit = new HashSet<Enemy>();
 
+                @Override
+                void onEnemyCollision(Enemy e) {
+                    if(alreadyhit.contains(e)) return;
+                    super.onEnemyCollision(e);
+                    e.takeDamage(4 * DG.p.dmg / (alreadyhit.size()+1));
+                    hit = false;
+                    alreadyhit.add(e);
+                }
+            });
+        }
+    };
     
     static Ability chainLightningShot = new Ability(1.5f, 10) {
         @Override

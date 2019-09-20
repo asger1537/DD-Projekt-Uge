@@ -29,7 +29,7 @@ class Player extends MovingUnit {
         expLevelUp = 60;
         levelUpHpIncrease = 50;
         expLevelUpRequirementIncrease = 60;
-        dmg = 5;
+        dmg = 10;
         levelUpDmgIncrease = 10;
         levelUpTextTime = 0;
         barrelLength = radius * 3;

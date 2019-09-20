@@ -27,7 +27,7 @@ class Zone {
 
         for (int y = 0; y < height; y += 50) {
             for (int x = 0; x < width; x += 50) {
-                DG.image(DG.floorTile, x, y);
+                DG.image(DG.floorTileImg, x, y);
             }
         }
 
@@ -122,7 +122,7 @@ class Zone {
         PVector portalPosition = new PVector(DG.width / 2, DG.height / 5);
         DG.fill(0, 0, 255);
         DG.imageMode(DG.CENTER);
-        DG.image(DG.portal, portalPosition.x, portalPosition.y);
+        DG.image(DG.portalImg, portalPosition.x, portalPosition.y);
         if (PVector.dist(portalPosition, DG.p.position) < portalRadius + DG.p.radius) {
             generateNewZone();
         }

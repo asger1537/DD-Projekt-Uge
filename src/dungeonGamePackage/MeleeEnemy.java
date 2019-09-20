@@ -12,7 +12,7 @@ class MeleeEnemy extends Enemy {
         color = DG.color(221, 33, 6);
         msBase = 3f;
         msCurrent = msBase;
-        radius = 10;
+        radius = 30;
         dead = false;
         maxHp = 50+50*lvl;
         hp = maxHp;
@@ -40,6 +40,13 @@ class MeleeEnemy extends Enemy {
                 msCurrent = msBase;
             }
         }
+    }
+
+    @Override
+    void display(){
+        DG.imageMode(DG.CENTER);
+        DG.image(DG.meleeEnemyImg, position.x, position.y);
+        showHealthBar();
     }
 
     void onDeath() {

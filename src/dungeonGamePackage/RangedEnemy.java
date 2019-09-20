@@ -26,12 +26,11 @@ class RangedEnemy extends Enemy {
         barrelWidth=radius/2;
         barrelLongSide = new PVector();
         barrelShortSide = new PVector();
+        lookDirection = new PVector(1,0);
     }
 
     @Override
     public void update() {
-        showBarrel();
-        display();
         checkAggro();
         if (target != null) {
             targetPosition = target.position;
@@ -42,6 +41,9 @@ class RangedEnemy extends Enemy {
                 attack();
             }
         }
+        showBarrel();
+        display();
+        
     }
 
     void setlookDirection() {

@@ -25,6 +25,7 @@ class BossEnemy extends Enemy {
         barrelWidth=radius/2;
         barrelLongSide = new PVector();
         barrelShortSide = new PVector();
+        lookDirection = new PVector(1,0);
     }
 
     @Override

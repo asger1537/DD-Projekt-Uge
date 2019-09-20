@@ -135,4 +135,8 @@ class Zone {
         DG.text(String.format("ZONE %d UNLOCKED", currentZone + 1), portalPosition.x,
                 portalPosition.y - portalRadius * 1.2f);
     }
+
+    GridTile gridTileAtPosition(PVector position){
+        return tiles[(int)position.x/tileSize)][(int)position.y/tileSize];
+    }
 }

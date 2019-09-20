@@ -1,7 +1,8 @@
 package dungeonGamePackage;
 
-import processing.core.PVector;
 import static dungeonGamePackage.DungeonGame.DG;
+
+import processing.core.PVector;
 
 class Utility {
 
@@ -23,4 +24,7 @@ class Utility {
         return false;
     }
 
+    static GridTile gridTileAtPosition(PVector position){
+        return DG.zone.tiles[(int)position.x/DG.zone.tileSize)][(int)position.y/DG.zone.tileSize];
+    }
 }

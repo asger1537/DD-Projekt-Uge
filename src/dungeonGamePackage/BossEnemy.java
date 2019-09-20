@@ -46,6 +46,6 @@ class BossEnemy extends RangedEnemy {
 
     void onDeath() {
         DG.p.expGet(expReward);
-        DG.zone.levelCompleted = true;
+        DG.zone.completed = true;
     }
 }

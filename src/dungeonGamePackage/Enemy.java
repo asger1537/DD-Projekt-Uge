@@ -10,6 +10,7 @@ abstract class Enemy extends MovingUnit {
     Player target;
     boolean hit;
     int packID;
+    GridTile spawnTile;
 
     public void update() {
 

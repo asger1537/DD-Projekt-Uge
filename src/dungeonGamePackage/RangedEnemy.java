@@ -7,6 +7,7 @@ class RangedEnemy extends Enemy {
 
     RangedEnemy(PVector position) {
         this.position = position;
+        spawnTile = Utility.
         lvl = DG.zone.currentZone;
         color = DG.color(221, 33, 6);
         msBase = 3f;

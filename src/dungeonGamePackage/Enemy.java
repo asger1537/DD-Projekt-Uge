@@ -6,8 +6,6 @@ import processing.core.PVector;
 abstract class Enemy extends MovingUnit {
     float agroRange;
     int dmg;
-    int atkcd;// attack cooldown
-    int atkcdCurrent;// used to count down
     int expReward;
     Player target;
     boolean hit;

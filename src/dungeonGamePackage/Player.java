@@ -36,6 +36,8 @@ class Player extends MovingUnit {
         barrelWidth = radius/2;
         barrelLongSide = new PVector();
         barrelShortSide = new PVector();
+        atkcd = 10/lvl;
+        atkcdCurrent = 0;
 
     }
 
@@ -63,8 +65,12 @@ class Player extends MovingUnit {
     }
 
     public void attack() {
+        if (atkcdCurrent>1) atkcdCurrent --;
+        else {
         DG.projectiles.add(new Projectile(PVector.add(position, barrelLongSide),
                 PVector.mult(lookDirection, 10), dmg, new String[] { "Enemy" }, 5, DG.color(100)));
+                atkcdCurrent = atkcd;
+        }
     }
 
     void levelUp() {

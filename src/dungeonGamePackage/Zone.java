@@ -66,7 +66,7 @@ class Zone {
 
         for (int i = 0; i < numEnemyPacks; i++) {
             packID = i;
-            int x = (int) DG.random(10, DG.width - 10);
+            int x = (int) DG.random(100, DG.width - 100);
             int y = (int) DG.random(DG.height / 4, DG.height - DG.height / 4);
             spawnPosition = new PVector(x, y);
             for (int j = 0; j < enemies.size(); j++) {

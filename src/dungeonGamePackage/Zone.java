@@ -66,14 +66,14 @@ class Zone {
 
         for (int i = 0; i < numEnemyPacks; i++) {
             packID = i;
-            int x = (int) DG.random(100, DG.width - 100);
-            int y = (int) DG.random(DG.height / 4, DG.height - DG.height / 4);
+            int x = (int) DG.random(300, width - 300);
+            int y = (int) DG.random(height / 4, height - height / 4);
             spawnPosition = new PVector(x, y);
             for (int j = 0; j < enemies.size(); j++) {
                 int maxTries = 100;
                 while (maxTries > 0 && PVector.dist(spawnPosition, enemies.get(j).position) < maxDistance) {
-                    x = (int) DG.random(10, DG.width - 10);
-                    y = (int) DG.random(DG.height / 4, DG.height - DG.height / 4);
+                    x = (int) DG.random(10, width - 10);
+                    y = (int) DG.random(height / 4, height - height / 4);
                     spawnPosition = new PVector(x, y);
                     --maxTries;
                 }
@@ -90,7 +90,7 @@ class Zone {
         display();
         
         if (enemies.size() == 0 && !bossHasSpawned) {
-            spawnBoss(new PVector(DG.width / 2, DG.height / 5));
+            spawnBoss(new PVector(width / 2, height / 5));
             bossHasSpawned = true;
         }
         if (levelCompleted) {

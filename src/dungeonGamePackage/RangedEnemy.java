@@ -51,7 +51,7 @@ class RangedEnemy extends Enemy {
     }
 
     void attack() {
-        DG.projectiles.add(new Projectile(PVector.add(position, PVector.mult(lookDirection, radius + 10)),
+        DG.projectiles.add(new Projectile(PVector.add(position, barrelLongSide),
                 PVector.mult(lookDirection, 10), 40, new String[] { "Player" }, 5, DG.color(206, 43, 34)));
         atkcdCurrent = atkcd;
     }

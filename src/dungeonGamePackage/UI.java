@@ -88,18 +88,19 @@ class UI {
 
     static void showExpBar() {
         String expBarContent = DG.p.exp + "/" + DG.p.expLevelUp;
+        DG.fill(0);
         DG.text("lvl" + DG.p.lvl, expBarX + expBarLength / 2, expBarY);
-        DG.text(expBarContent, expBarX + expBarLength / 2, (float) (expBarY + expBarHeight * 0.8));
         DG.rectMode(DG.CORNER);
         DG.fill(50, 128);
         DG.rect(expBarX, expBarY, expBarLength, expBarHeight);// drawing the bar
         DG.fill(125, 0, 115);
         DG.rect(expBarX, expBarY, expBarLength * DG.p.exp / DG.p.expLevelUp, expBarHeight);
-
         // dividing the expbar into 10 parts
         for (float x = expBarX; x < expBarX + expBarLength; x += expBarLength / 10f) {
             DG.line(x, expBarY, x, expBarY + expBarHeight);
         }
+        DG.fill(0);
+        DG.text(expBarContent, expBarX + expBarLength / 2, (float) (expBarY + expBarHeight * 0.8));
     }
 
     @FunctionalInterface

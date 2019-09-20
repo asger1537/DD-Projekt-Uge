@@ -63,7 +63,7 @@ class Player extends MovingUnit {
     }
 
     public void attack() {
-        DG.projectiles.add(new Projectile(PVector.add(position, PVector.mult(lookDirection, radius + 5)),
+        DG.projectiles.add(new Projectile(PVector.add(position, barrelLongSide),
                 PVector.mult(lookDirection, 10), dmg, new String[] { "Enemy" }, 5, DG.color(100)));
     }
 

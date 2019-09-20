@@ -47,7 +47,7 @@ class Zone {
     }
 
     void spawnEnemyCluster(PVector position, int numEnemies) {
-        PVector spawnVector = new PVector(30, 0);
+        PVector spawnVector = new PVector(100, 0);
 
         for (int i = 0; i < numEnemies; i++) {
             PVector spawnPosition;
@@ -75,7 +75,6 @@ class Zone {
         int maxDistance = 250;
 
         for (int i = 0; i < numEnemyPacks; i++) {
-            packID = i;
             int x = (int) DG.random(300, width - 300);
             int y = (int) DG.random(height / 4, height - height / 4);
             spawnPosition = new PVector(x, y);

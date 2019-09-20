@@ -3,10 +3,10 @@ package dungeonGamePackage;
 import processing.core.PVector;
 import static dungeonGamePackage.DungeonGame.DG;
 
-class BossEnemy extends Enemy {
+class BossEnemy extends RangedEnemy {
 
     BossEnemy(PVector position) {
-        this.position = position;
+        super(position);
         lvl = DG.zone.currentZone;
         color = DG.color(221, 33, 6);
         msBase = 3f;
@@ -44,17 +44,8 @@ class BossEnemy extends Enemy {
         }
     }
 
-    void setlookDirection() {
-        lookDirection = PVector.sub(targetPosition, position).normalize();
-    }
-
-    void attack() {
-        DG.projectiles.add(new Projectile(PVector.add(position, PVector.mult(lookDirection, radius + 10)),
-                PVector.mult(lookDirection, 10), 40, new String[] { "Player" }, 5, DG.color(206, 43, 34)));
-        atkcdCurrent = atkcd;
-    }
-
     void onDeath() {
         DG.p.expGet(expReward);
+        DG.zone.levelCompleted = true;
     }
 }

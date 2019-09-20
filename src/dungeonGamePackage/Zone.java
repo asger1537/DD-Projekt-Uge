@@ -9,8 +9,6 @@ class Zone {
     boolean levelCompleted;
     int currentZone;
     ArrayList<Enemy> enemies;
-    boolean bossHasSpawned;
-
     float width, height;
 
     Zone(float width, float height) {
@@ -18,7 +16,6 @@ class Zone {
         this.height = height;
         currentZone = 1;
         enemies = new ArrayList<Enemy>();
-        bossHasSpawned = false;
         levelCompleted = false;
     }
 
@@ -33,17 +30,15 @@ class Zone {
 
     }
 
-    void spawnEnemyCluster(PVector position, int packID) {
-        int numEnemies = DG.floor(DG.random(3, 6));
-        PVector spawnVector = new PVector(100, 0);
+    void spawnEnemyCluster(PVector position, int numEnemies) {
+        PVector spawnVector = new PVector(30, 0);
 
         for (int i = 0; i < numEnemies; i++) {
             PVector spawnPosition;
-            int mobTypeID = DG.floor(DG.random(0, 2));
+            int mobTypeID = DG.floor(DG.random(0, 2));//melee or ranged
             
             // the first enemy is just spawned at the position, but the subsequent enemies
-            // are spawned around
-            // the first enemy with some randomness
+            // are spawned around the first enemy with some randomness
             if (i == 0) {
                 spawnPosition = position;
             } else {
@@ -51,9 +46,9 @@ class Zone {
             }
             spawnVector.rotate(2 * DG.PI / numEnemies * DG.random(0.8f, 1.2f));
             if (mobTypeID == 0) {
-                enemies.add(new MeleeEnemy(spawnPosition,packID));
+                enemies.add(new MeleeEnemy(spawnPosition));
             } else {
-                enemies.add(new RangedEnemy(spawnPosition,packID));
+                enemies.add(new RangedEnemy(spawnPosition));
             }
         }
     }
@@ -62,7 +57,6 @@ class Zone {
         int numEnemyPacks = DG.floor(DG.random(1 * currentZone, 2 * currentZone));
         PVector spawnPosition;
         int maxDistance = 250;
-        int packID;
 
         for (int i = 0; i < numEnemyPacks; i++) {
             packID = i;
@@ -78,8 +72,10 @@ class Zone {
                     --maxTries;
                 }
             }
-            spawnEnemyCluster(spawnPosition,packID);
+            spawnEnemyCluster(spawnPosition, DG.floor(DG.random(3, 6)));
         }
+
+        spawnBoss(new PVector(DG.width / 2, DG.height / 5));
     }
 
     void spawnBoss(PVector spawnPosition) {
@@ -88,17 +84,10 @@ class Zone {
 
     void update() {
         display();
-        
-        if (enemies.size() == 0 && !bossHasSpawned) {
-            spawnBoss(new PVector(width / 2, height / 5));
-            bossHasSpawned = true;
-        }
         if (levelCompleted) {
             portalTonextLevel();
         }
-        if (enemies.size() == 0 && bossHasSpawned) {
-            levelCompleted = true;
-        }
+        //updating enemies and removing dead ones
         for (int i = 0; i < enemies.size(); i++) {
             enemies.get(i).update();
             if (enemies.get(i).dead) {
@@ -110,10 +99,8 @@ class Zone {
 
     void generateNewZone() {
         currentZone += 1;
-        bossHasSpawned = false;
         levelCompleted = false;
-        DG.p.position = new PVector(DG.width / 2f, DG.height * 7f / 8f); // player is moved to middle bottom of the
-                                                                         // screen when a new level starts
+        DG.p.position = new PVector(100, height-10); // player spawns at buttom left corner
         spawnZoneEnemies();
     }
 

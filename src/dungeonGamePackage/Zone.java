@@ -39,7 +39,7 @@ class Zone {
 
         for (int i = 0; i < numEnemies; i++) {
             PVector spawnPosition;
-            int mobType = DG.floor(DG.random(0, 2));
+            int mobTypeID = DG.floor(DG.random(0, 2));
 
             // the first enemy is just spawned at the position, but the subsequent enemies
             // are spawned around
@@ -50,7 +50,7 @@ class Zone {
                 spawnPosition = PVector.add(position, spawnVector);
             }
             spawnVector.rotate(2 * DG.PI / numEnemies * DG.random(0.8f, 1.2f));
-            if (mobType == 0) {
+            if (mobTypeID == 0) {
                 enemies.add(new MeleeEnemy(spawnPosition));
             } else {
                 enemies.add(new RangedEnemy(spawnPosition));

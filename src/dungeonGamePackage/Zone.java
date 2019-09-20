@@ -5,26 +5,42 @@ import static dungeonGamePackage.DungeonGame.DG;
 import java.util.ArrayList;
 import processing.core.PVector;
 
+
 class Zone {
-    boolean levelCompleted;
+    boolean completed;
     int currentZone;
     ArrayList<Enemy> enemies;
-    float width, height;
+    int width, height;
+    GridTile[][] tiles;
+    static int tileSize = 50;
+    int tileRows, tileCols;
 
-    Zone(float width, float height) {
+    Zone(int width, int height, int zoneLevel) {
         this.width = width;
         this.height = height;
-        currentZone = 1;
+        this.currentZone = zoneLevel;
+        this.tileRows = height/tileSize;
+        this.tileCols = width/tileSize;
+        completed = false;
+
         enemies = new ArrayList<Enemy>();
-        levelCompleted = false;
+        spawnZoneEnemies();
+
+        tiles = new GridTile[tileRows][tileCols];
+        for (int i = 0; i < tileRows; i++){
+            for (int j = 0; j < tileCols; j++){
+                tiles[i][j] = new GridTile(new PVector(j*tileSize, i*tileSize), i, j, false, DG.floorTileImg);
+            }
+        }
+
     }
 
     void display() {
         DG.background(0);
 
-        for (int y = 0; y < height; y += 50) {
-            for (int x = 0; x < width; x += 50) {
-                DG.image(DG.floorTileImg, x, y);
+        for (int i = 0; i < tileRows; i++){
+            for (int j = 0; j < tileCols; j++){
+                tiles[i][j].display();
             }
         }
 
@@ -83,7 +99,7 @@ class Zone {
 
     void update() {
         display();
-        if (levelCompleted) {
+        if (completed) {
             portalTonextLevel();
         }
         //updating enemies and removing dead ones
@@ -97,10 +113,10 @@ class Zone {
     }
 
     void generateNewZone() {
-        currentZone += 1;
-        levelCompleted = false;
+        DG.zone = new Zone(2000 + DG.floor(DG.random(0, 20))*tileSize, 2000 + DG.floor(DG.random(0, 20))*tileSize, currentZone +1);
         DG.p.position = new PVector(100, height-10); // player spawns at buttom left corner
         spawnZoneEnemies();
+
     }
 
     void portalTonextLevel() {

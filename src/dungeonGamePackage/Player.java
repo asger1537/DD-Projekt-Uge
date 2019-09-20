@@ -13,7 +13,7 @@ class Player extends MovingUnit {
     int levelUpTextTime;
 
     Player() {
-        position = new PVector(1000,1500); // player spawns at bottom middle
+        position = new PVector(radius*4,1900-radius*4); // player spawns at bottom left corner
         targetPosition = position.copy();
         msBase = 4f;
         msCurrent = msBase;

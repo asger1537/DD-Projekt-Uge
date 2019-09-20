@@ -25,6 +25,14 @@ abstract class Enemy extends MovingUnit {
         // set target to player if the enemy takes damage
         if (hit) {
             target = DG.p;
+            for(int i = 0; i < DG.zone.enemies.size(); i++){
+                Enemy enemy = DG.zone.enemies.get(i);
+            if(enemy == this || enemy.target == DG.p) continue;
+                if(spawnTile.getDistance(enemy.spawnTile) < 5){
+                    enemy.target = DG.p;
+                }
+            }
+
         }
     }
 

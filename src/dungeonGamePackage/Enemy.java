@@ -33,4 +33,8 @@ abstract class Enemy extends MovingUnit {
         DG.p.takeDamage(dmg);
         atkcdCurrent = atkcd;
     }
+
+    void onDeath() {
+        DG.p.expGet(expReward);
+    }
 }

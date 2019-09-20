@@ -75,14 +75,15 @@ class Zone {
         int maxDistance = 250;
 
         for (int i = 0; i < numEnemyPacks; i++) {
-            int x = (int) DG.random(10, DG.width - 10);
-            int y = (int) DG.random(DG.height / 4, DG.height - DG.height / 4);
+            packID = i;
+            int x = (int) DG.random(300, width - 300);
+            int y = (int) DG.random(height / 4, height - height / 4);
             spawnPosition = new PVector(x, y);
             for (int j = 0; j < enemies.size(); j++) {
                 int maxTries = 100;
                 while (maxTries > 0 && PVector.dist(spawnPosition, enemies.get(j).position) < maxDistance) {
-                    x = (int) DG.random(10, DG.width - 10);
-                    y = (int) DG.random(DG.height / 4, DG.height - DG.height / 4);
+                    x = (int) DG.random(10, width - 10);
+                    y = (int) DG.random(height / 4, height - height / 4);
                     spawnPosition = new PVector(x, y);
                     --maxTries;
                 }

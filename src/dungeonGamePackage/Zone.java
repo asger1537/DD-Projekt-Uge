@@ -112,7 +112,7 @@ class Zone {
 
     void generateNewZone() {
         DG.zone = new Zone(2000 + DG.floor(DG.random(0, 20))*tileSize, 2000 + DG.floor(DG.random(0, 20))*tileSize, currentZone +1);
-        DG.p.position = new PVector(DG.zone.width/2,DG.zone.height-DG.zone.height/5); //player spawns in the bottom middle of the map
+        DG.p.position = new PVector(DG.p.radius*4,DG.zone.height-DG.p.radius*4); //player spawns in the bottom left corner of the map
         DG.zone.spawnZoneEnemies();
     }
 

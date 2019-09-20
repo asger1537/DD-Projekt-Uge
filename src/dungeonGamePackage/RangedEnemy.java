@@ -20,7 +20,7 @@ class RangedEnemy extends Enemy {
         dmg = 10*lvl;
         atkcd = 60/lvl;
         atkcdCurrent = 0;
-        expReward = 10*lvl;
+        expReward = 15*lvl;
         healthBarLength = 30;
         barrelLength=radius*3;
         barrelWidth=radius/2;
@@ -52,7 +52,7 @@ class RangedEnemy extends Enemy {
 
     void attack() {
         DG.projectiles.add(new Projectile(PVector.add(position, PVector.mult(lookDirection, radius + 10)),
-                PVector.mult(lookDirection, 10), 40, new String[] { "Player" }, 5, DG.color(206, 43, 34)));
+                PVector.mult(lookDirection, 10), dmg, new String[] { "Player" }, 5, DG.color(206, 43, 34)));
         atkcdCurrent = atkcd;
     }
 }

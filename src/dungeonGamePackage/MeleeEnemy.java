@@ -14,7 +14,7 @@ class MeleeEnemy extends Enemy {
         msCurrent = msBase;
         radius = 30;
         dead = false;
-        maxHp = 50+50*lvl;
+        maxHp = 100+100*lvl;
         hp = maxHp;
         agroRange = 200;
         dmg = 10*lvl;

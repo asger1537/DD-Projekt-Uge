@@ -82,7 +82,6 @@ abstract class MovingUnit {
 
     void showBarrel() {
         //if (lookDirection != null) {
-            DG.println(lookDirection);
             DG.fill(0);
             // drawing the barrel
             barrelLongSide = PVector.mult(lookDirection, barrelLength);

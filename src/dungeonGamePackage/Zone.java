@@ -55,7 +55,7 @@ class Zone {
     }
 
     void spawnZoneEnemies() {
-        int numEnemyPacks = DG.floor(DG.random(5*currentZone, 7*currentZone));
+        int numEnemyPacks = DG.floor(DG.random(1*currentZone, 2*currentZone));
         PVector spawnPosition;
         int maxDistance = 250;
 

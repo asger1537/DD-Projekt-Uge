@@ -13,7 +13,7 @@ public class DungeonGame extends PApplet {
 	Zone zone;
 	Screen currentScreen;
 	ArrayList<Projectile> projectiles;
-	PImage portal, floorTile, floorTileBackground;
+	PImage portalImg, floorTileImg, meleeEnemyImg;
 
 	public static void main(String[] args) {
 		PApplet.main("dungeonGamePackage.DungeonGame");
@@ -31,9 +31,9 @@ public class DungeonGame extends PApplet {
 		zone = new Zone(2000f, 2000f);
 		projectiles = new ArrayList<Projectile>();
 		zone.spawnZoneEnemies();
-		portal = loadImage("portal.png");
-		floorTile = loadImage("floorTile.png");
-		floorTileBackground = loadImage("floorTileBackground.png");
+		portalImg = loadImage("portal.png");
+		floorTileImg = loadImage("floorTile.png");
+		meleeEnemyImg = loadImage("meleeEnemy.png");
 	}
 
 	public void draw() {

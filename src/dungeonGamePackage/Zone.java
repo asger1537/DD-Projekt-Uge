@@ -27,7 +27,7 @@ class Zone {
 
         for (int y = 0; y < height; y += 50) {
             for (int x = 0; x < width; x += 50) {
-                DG.image(DG.floorTile, x, y);
+                DG.image(DG.floorTileImg, x, y);
             }
         }
 
@@ -35,7 +35,7 @@ class Zone {
 
     void spawnEnemyCluster(PVector position, int packID) {
         int numEnemies = DG.floor(DG.random(3, 6));
-        PVector spawnVector = new PVector(30, 0);
+        PVector spawnVector = new PVector(100, 0);
 
         for (int i = 0; i < numEnemies; i++) {
             PVector spawnPosition;
@@ -66,7 +66,7 @@ class Zone {
 
         for (int i = 0; i < numEnemyPacks; i++) {
             packID = i;
-            int x = (int) DG.random(10, DG.width - 10);
+            int x = (int) DG.random(100, DG.width - 100);
             int y = (int) DG.random(DG.height / 4, DG.height - DG.height / 4);
             spawnPosition = new PVector(x, y);
             for (int j = 0; j < enemies.size(); j++) {
@@ -122,7 +122,7 @@ class Zone {
         PVector portalPosition = new PVector(DG.width / 2, DG.height / 5);
         DG.fill(0, 0, 255);
         DG.imageMode(DG.CENTER);
-        DG.image(DG.portal, portalPosition.x, portalPosition.y);
+        DG.image(DG.portalImg, portalPosition.x, portalPosition.y);
         if (PVector.dist(portalPosition, DG.p.position) < portalRadius + DG.p.radius) {
             generateNewZone();
         }

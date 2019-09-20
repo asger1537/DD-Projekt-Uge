@@ -17,7 +17,7 @@ class Player extends MovingUnit {
         targetPosition = position.copy();
         msBase = 4f;
         msCurrent = msBase;
-        radius = 15;
+        radius = 20;
         color = DG.color(36, 191, 83);
         dead = false;
         maxHp = 100;

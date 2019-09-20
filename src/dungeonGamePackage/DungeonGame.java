@@ -32,6 +32,7 @@ public class DungeonGame extends PApplet {
 		currentScreen = UI.startMenu;
 		p = new Player();
 		zone = new Zone(2000, 2000, 1);
+		zone.spawnZoneEnemies();
 		projectiles = new ArrayList<Projectile>();		
 	}
 

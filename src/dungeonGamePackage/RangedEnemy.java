@@ -7,7 +7,7 @@ class RangedEnemy extends Enemy {
 
     RangedEnemy(PVector position) {
         this.position = position;
-        spawnTile = Utility.
+        spawnTile = Utility.gridTileAtPosition(position);
         lvl = DG.zone.currentZone;
         color = DG.color(221, 33, 6);
         msBase = 3f;
@@ -51,7 +51,7 @@ class RangedEnemy extends Enemy {
     }
 
     void attack() {
-        DG.projectiles.add(new Projectile(PVector.add(position, barrelLongSide),
+        DG.projectiles.add(new Projectile(PVector.add(position, PVector.mult(lookDirection, radius + 10)),
                 PVector.mult(lookDirection, 10), 40, new String[] { "Player" }, 5, DG.color(206, 43, 34)));
         atkcdCurrent = atkcd;
     }

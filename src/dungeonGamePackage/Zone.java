@@ -23,9 +23,6 @@ class Zone {
         this.tileCols = width/tileSize;
         completed = false;
 
-        enemies = new ArrayList<Enemy>();
-        spawnZoneEnemies();
-
         tiles = new GridTile[tileRows][tileCols];
         for (int i = 0; i < tileRows; i++){
             for (int j = 0; j < tileCols; j++){
@@ -33,6 +30,7 @@ class Zone {
             }
         }
 
+        enemies = new ArrayList<Enemy>();
     }
 
     void display() {
@@ -47,7 +45,7 @@ class Zone {
     }
 
     void spawnEnemyCluster(PVector position, int numEnemies) {
-        PVector spawnVector = new PVector(100, 0);
+        PVector spawnVector = new PVector(30, 0);
 
         for (int i = 0; i < numEnemies; i++) {
             PVector spawnPosition;
@@ -116,7 +114,6 @@ class Zone {
         DG.zone = new Zone(2000 + DG.floor(DG.random(0, 20))*tileSize, 2000 + DG.floor(DG.random(0, 20))*tileSize, currentZone +1);
         DG.p.position = new PVector(100, height-10); // player spawns at buttom left corner
         spawnZoneEnemies();
-
     }
 
     void portalTonextLevel() {
@@ -133,9 +130,5 @@ class Zone {
         DG.fill(0);
         DG.text(String.format("ZONE %d UNLOCKED", currentZone + 1), portalPosition.x,
                 portalPosition.y - portalRadius * 1.2f);
-    }
-
-    GridTile gridTileAtPosition(PVector position){
-        return tiles[(int)position.x/tileSize)][(int)position.y/tileSize];
     }
 }

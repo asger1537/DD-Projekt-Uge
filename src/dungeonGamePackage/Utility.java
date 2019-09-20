@@ -25,6 +25,6 @@ class Utility {
     }
 
     static GridTile gridTileAtPosition(PVector position){
-        return DG.zone.tiles[(int)position.x/DG.zone.tileSize)][(int)position.y/DG.zone.tileSize];
+        return DG.zone.tiles[(int)position.x/DG.zone.tileSize][(int)position.y/DG.zone.tileSize];
     }
 }

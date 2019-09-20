@@ -26,5 +26,4 @@ class GridTile {
     float getDistance(GridTile other){
         return (float)Math.sqrt((i-other.i)*(i-other.i)+(j-other.j)*(j-other.j));
     }
-
 }

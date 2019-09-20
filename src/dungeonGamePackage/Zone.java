@@ -45,7 +45,7 @@ class Zone {
     }
 
     void spawnEnemyCluster(PVector position, int numEnemies) {
-        PVector spawnVector = new PVector(100, 0);
+        PVector spawnVector = new PVector(30, 0);
 
         for (int i = 0; i < numEnemies; i++) {
             PVector spawnPosition;
@@ -113,7 +113,7 @@ class Zone {
     void generateNewZone() {
         DG.zone = new Zone(2000 + DG.floor(DG.random(0, 20))*tileSize, 2000 + DG.floor(DG.random(0, 20))*tileSize, currentZone +1);
         DG.p.position = new PVector(100, height-10); // player spawns at buttom left corner
-        spawnZoneEnemies();
+        DG.zone.spawnZoneEnemies();
     }
 
     void portalTonextLevel() {

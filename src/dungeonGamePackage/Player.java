@@ -32,14 +32,21 @@ class Player extends MovingUnit {
         dmg = 5;
         levelUpDmgIncrease = 10;
         levelUpTextTime = 0;
+        barrelLength = radius*3;
+        barrelWidth = radius/2;
+        barrelLongSide = new PVector();
+        barrelShortSide = new PVector();
+
     }
 
     public void update() {
+        setMouseDirection();
+        showBarrel();
         display();
         if (position != targetPosition) {
             moveTowardsTargetPosition();
         }
-        setMouseDirection();
+       
         if (dead) {
             onDeath();
         }

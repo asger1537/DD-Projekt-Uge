@@ -21,10 +21,16 @@ class BossEnemy extends RangedEnemy {
         atkcdCurrent = 0;
         expReward = 50*lvl;
         healthBarLength = 60;
+        barrelLength=radius*3;
+        barrelWidth=radius/2;
+        barrelLongSide = new PVector();
+        barrelShortSide = new PVector();
+        lookDirection = new PVector(1,0);
     }
 
     @Override
     public void update() {
+        showBarrel();
         display();
         checkAggro();
         if (target != null) {

@@ -5,8 +5,9 @@ import static dungeonGamePackage.DungeonGame.DG;
 
 class MeleeEnemy extends Enemy {
 
-    MeleeEnemy(PVector position) {
+    MeleeEnemy(PVector position, int packID) {
         this.position = position;
+        this.packID = packID;
         lvl = DG.zone.currentZone;
         color = DG.color(221, 33, 6);
         msBase = 3f;
@@ -38,7 +39,6 @@ class MeleeEnemy extends Enemy {
                 checkPlayerCollision();
                 msCurrent = msBase;
             }
-
         }
     }
 
@@ -57,5 +57,21 @@ class MeleeEnemy extends Enemy {
             attack();
         }
     }
-
+    
+    @Override
+    void checkAggro() {
+        // set target to player if the player is in the aggro range
+        float dist = PVector.dist(position, DG.p.position);
+        if (dist <= agroRange) {
+            target = DG.p;
+        }
+        // set target to player if the enemy takes damage
+        if (hit) {
+            for(int i = 0; i < DG.zone.enemies.size(); i++){
+                if(DG.zone.enemies.get(i).packID == packID){
+                    DG.zone.enemies.get(i).target = DG.p;
+                }
+            }
+        }
+    }
 }

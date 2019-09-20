@@ -54,6 +54,7 @@ class Projectile {
     void onEnemyCollision(Enemy e) {
         e.takeDamage(dmg);
         hit = true;
+        e.hit = true;
     }
 
     void onPlayerCollision() {

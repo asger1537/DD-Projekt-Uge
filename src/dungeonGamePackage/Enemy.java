@@ -10,6 +10,8 @@ abstract class Enemy extends MovingUnit {
     int atkcdCurrent;// used to count down
     int expReward;
     Player target;
+    boolean hit;
+    int packID;
 
     public void update() {
 
@@ -22,7 +24,7 @@ abstract class Enemy extends MovingUnit {
             target = DG.p;
         }
         // set target to player if the enemy takes damage
-        if (hp != maxHp) {
+        if (hit) {
             target = DG.p;
         }
     }

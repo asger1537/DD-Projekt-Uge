@@ -33,14 +33,14 @@ class Zone {
 
     }
 
-    void spawnEnemyCluster(PVector position) {
+    void spawnEnemyCluster(PVector position, int packID) {
         int numEnemies = DG.floor(DG.random(3, 6));
         PVector spawnVector = new PVector(30, 0);
 
         for (int i = 0; i < numEnemies; i++) {
             PVector spawnPosition;
             int mobTypeID = DG.floor(DG.random(0, 2));
-
+            
             // the first enemy is just spawned at the position, but the subsequent enemies
             // are spawned around
             // the first enemy with some randomness
@@ -51,9 +51,9 @@ class Zone {
             }
             spawnVector.rotate(2 * DG.PI / numEnemies * DG.random(0.8f, 1.2f));
             if (mobTypeID == 0) {
-                enemies.add(new MeleeEnemy(spawnPosition));
+                enemies.add(new MeleeEnemy(spawnPosition,packID));
             } else {
-                enemies.add(new RangedEnemy(spawnPosition));
+                enemies.add(new RangedEnemy(spawnPosition,packID));
             }
         }
     }
@@ -62,8 +62,10 @@ class Zone {
         int numEnemyPacks = DG.floor(DG.random(1 * currentZone, 2 * currentZone));
         PVector spawnPosition;
         int maxDistance = 250;
+        int packID;
 
         for (int i = 0; i < numEnemyPacks; i++) {
+            packID = i;
             int x = (int) DG.random(10, DG.width - 10);
             int y = (int) DG.random(DG.height / 4, DG.height - DG.height / 4);
             spawnPosition = new PVector(x, y);
@@ -76,7 +78,7 @@ class Zone {
                     --maxTries;
                 }
             }
-            spawnEnemyCluster(spawnPosition);
+            spawnEnemyCluster(spawnPosition,packID);
         }
     }
 

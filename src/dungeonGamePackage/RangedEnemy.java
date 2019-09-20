@@ -22,10 +22,15 @@ class RangedEnemy extends Enemy {
         atkcdCurrent = 0;
         expReward = 10*lvl;
         healthBarLength = 30;
+        barrelLength=radius*3;
+        barrelWidth=radius/2;
+        barrelLongSide = new PVector();
+        barrelShortSide = new PVector();
     }
 
     @Override
     public void update() {
+        showBarrel();
         display();
         checkAggro();
         if (target != null) {

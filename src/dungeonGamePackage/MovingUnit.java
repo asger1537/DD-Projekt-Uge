@@ -8,6 +8,9 @@ abstract class MovingUnit {
     PVector targetPosition;// the position the unit is moving towards
     PVector dir; // direction of unit's movement
     PVector lookDirection; // direction of unit's target
+    PVector v1, v2, v3, v4;
+    PVector barrelLongSide;
+    PVector barrelShortSide;
     float msBase;
     float msCurrent;
     float radius;
@@ -24,7 +27,6 @@ abstract class MovingUnit {
 
     void display() {
         showHealthBar();
-        // showBarrel();
         DG.fill(color);
         Utility.circle(position, radius);
 
@@ -81,18 +83,20 @@ abstract class MovingUnit {
     void showBarrel() {
         DG.fill(0);
         // drawing the barrel
+        barrelLongSide = PVector.mult(lookDirection, barrelLength);
+        barrelShortSide = new PVector(-lookDirection.y, lookDirection.x);
         DG.beginShape();
-        PVector v1 = PVector.add(position, new PVector(-lookDirection.y, lookDirection.x).mult(barrelWidth));
-        PVector v2 = PVector.add(position, new PVector(lookDirection.y, -lookDirection.x).mult(barrelWidth));
-        PVector v3 = PVector.add(v2, PVector.mult(lookDirection, barrelLength));
-        PVector v4 = PVector.add(v1, PVector.mult(lookDirection, barrelLength));
+         v1 = PVector.add(position, PVector.mult(barrelShortSide, barrelWidth));
+         v2 = PVector.add(position, PVector.mult(barrelShortSide, -barrelWidth));
+         v3 = PVector.add(v2, barrelLongSide);
+         v4 = PVector.add(v1, barrelLongSide);
         //DG.pushMatrix();
         //DG.translate(position.x, position.y);
         DG.vertex(v1.x, v1.y);
         DG.vertex(v2.x, v2.y);
         DG.vertex(v3.x, v3.y);
         DG.vertex(v4.x, v4.y);
-        //DG.endShape(2);
+        DG.endShape(2);
         //DG.popMatrix();
     }
 }

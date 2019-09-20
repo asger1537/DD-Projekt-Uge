@@ -88,7 +88,7 @@ class Zone {
 
     void update() {
         display();
-
+        
         if (enemies.size() == 0 && !bossHasSpawned) {
             spawnBoss(new PVector(DG.width / 2, DG.height / 5));
             bossHasSpawned = true;

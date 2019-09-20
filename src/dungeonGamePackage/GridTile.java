@@ -23,5 +23,8 @@ class GridTile {
         DG.image(img, position.x, position.y);
     }
 
+    float getDistance(GridTile other){
+        return (float)Math.sqrt((i-other.i)*(i-other.i)+(j-other.j)*(j-other.j));
+    }
 
 }

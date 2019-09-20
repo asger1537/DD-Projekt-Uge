@@ -45,7 +45,7 @@ class Zone {
     }
 
     void spawnEnemyCluster(PVector position, int numEnemies) {
-        PVector spawnVector = new PVector(100, 0);
+        PVector spawnVector = new PVector(30, 0);
 
         for (int i = 0; i < numEnemies; i++) {
             PVector spawnPosition;

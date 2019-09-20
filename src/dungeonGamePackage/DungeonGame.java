@@ -13,6 +13,7 @@ public class DungeonGame extends PApplet {
 	Zone zone;
 	Screen currentScreen;
 	ArrayList<Projectile> projectiles;
+	ArrayList<Particle> particles;
 	PImage portalImg, floorTileImg, meleeEnemyImg;
 
 	public static void main(String[] args) {

@@ -35,7 +35,7 @@ class Input{
     public static void keyPressed(){
         //using abilities
         if (DG.key == 'q'){
-
+            Abilities.chainLightningShot.use();
         } 
         if (DG.key == 'w'){
             

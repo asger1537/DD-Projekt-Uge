@@ -35,7 +35,7 @@ class Zone {
 
 
     void spawnEnemyCluster(PVector position) {
-        int numEnemies = DG.floor(DG.random(3, 6));
+        int numEnemies = DG.floor(DG.random(3,6));
         PVector spawnVector = new PVector(30, 0);
 
         for (int i = 0; i < numEnemies; i++) {
@@ -55,14 +55,23 @@ class Zone {
     }
 
     void spawnZoneEnemies() {
-        int numEnemyPacks = DG.floor(DG.random(1,2));
+        int numEnemyPacks = DG.floor(DG.random(5*currentZone, 7*currentZone));
         PVector spawnPosition;
-        int maxDistance;
+        int maxDistance = 250;
 
         for (int i = 0; i < numEnemyPacks; i++) {
             int x = (int) DG.random(10, DG.width - 10);
             int y = (int) DG.random(DG.height / 4, DG.height - DG.height / 4);
             spawnPosition = new PVector(x, y);
+            for(int j = 0; j < enemies.size(); j++){
+                int maxTries = 100;
+                while(maxTries > 0 && PVector.dist(spawnPosition, enemies.get(j).position) < maxDistance){
+                     x = (int) DG.random(10, DG.width - 10);
+                     y = (int) DG.random(DG.height / 4, DG.height - DG.height / 4);
+                    spawnPosition = new PVector(x, y); 
+                    --maxTries;
+                }
+            }
             spawnEnemyCluster(spawnPosition);
         }
     }

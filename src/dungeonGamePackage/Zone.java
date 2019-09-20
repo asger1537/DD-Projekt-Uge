@@ -35,7 +35,7 @@ class Zone {
 
     void spawnEnemyCluster(PVector position, int packID) {
         int numEnemies = DG.floor(DG.random(3, 6));
-        PVector spawnVector = new PVector(30, 0);
+        PVector spawnVector = new PVector(40, 0);
 
         for (int i = 0; i < numEnemies; i++) {
             PVector spawnPosition;

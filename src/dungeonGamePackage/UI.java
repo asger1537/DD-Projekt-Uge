@@ -41,6 +41,10 @@ class UI {
                         DG.projectiles.remove(i);
                     }
                 }
+                for (int i = 0; i < DG.particles.size(); i++){
+                    DG.particles.get(i).update();
+                }
+
                 DG.popMatrix();
 
                 showAbilityBar();

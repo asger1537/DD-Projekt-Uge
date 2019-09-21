@@ -9,7 +9,7 @@ import java.util.HashSet;
 import processing.core.PVector;
 
 class Abilities {
-    static Ability piercingProjectile = new Ability(0.05f, 10, DG.frostBoltimage){
+    static Ability piercingProjectile = new Ability(4, 10, DG.frostBoltimage){
         @Override
         void use() {
             DG.projectiles.add(new Projectile(PVector.add(DG.p.position, DG.p.barrelLongSide),
@@ -22,7 +22,7 @@ class Abilities {
                 void onEnemyCollision(Enemy e) {
                     if(alreadyhit.contains(e)) return;
                     super.onEnemyCollision(e);
-                    e.takeDamage(4 * DG.p.dmg / (alreadyhit.size()+1));
+                    e.takeDamage(dmg / (alreadyhit.size()+1));
                     hit = false;
                     alreadyhit.add(e);
                 }
@@ -38,7 +38,7 @@ class Abilities {
 
         @Override
         void updateDescription(){
-            description = "Fires a piercing frostbolt that deals less damage for each enemy hit.";
+            description = String.format("Fires a piercing frostbolt that deals %d damage on the first hit and less damage for each enemy hit.", (int)(DG.p.dmg*scaling));
             formatDescription();
         }
     };

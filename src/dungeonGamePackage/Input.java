@@ -35,7 +35,7 @@ class Input{
     public static void keyPressed(){
         //using abilities
         for (int i = 0; i < Keybinds.abilityKeybinds.length; i++){
-            if (DG.key == Keybinds.abilityKeybinds[i] && DG.p.abilities[i+1].cdCurrent == 0 && DG.p.abilities[i+1] != null){
+            if (DG.key == Keybinds.abilityKeybinds[i] && DG.p.abilities[i+1] != null && DG.p.abilities[i+1].cdCurrent == 0 ){
                 DG.p.abilities[i+1].use();
             }    
         }

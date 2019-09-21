@@ -41,6 +41,7 @@ class Player extends MovingUnit {
         abilities = new Ability[5];
         abilities[0] = Abilities.standardShot;
         abilities[1] = Abilities.chainLightningShot;
+        abilities[2] = Abilities.piercingProjectile;
     }
 
     public void update() {

@@ -75,6 +75,7 @@ class UI {
     }
 
     static void showAbilityBar() {
+        DG.println(abilityBarHeight);
         DG.rectMode(DG.CORNER);
         int keybindIdx = 0;
         for (float x = abilityBarX; x < abilityBarX + abilityBarLength; x += abilityBarLength / 5f) {

@@ -48,4 +48,23 @@ class BossEnemy extends RangedEnemy {
         DG.p.expGet(expReward);
         DG.zone.completed = true;
     }
+
+    @Override
+    void checkAggro() {
+        // set target to player if the player is in the aggro range
+        float dist = PVector.dist(position, DG.p.position);
+        if (dist <= agroRange) {
+            target = DG.p;
+        }
+        // All enemies target the player if the boss is attacked
+        if (hit) {
+            target = DG.p;
+            for(int i = 0; i < DG.zone.enemies.size(); i++){
+                Enemy enemy = DG.zone.enemies.get(i);
+            if(enemy == this || enemy.target == DG.p) continue;  
+                    enemy.target = DG.p;        
+          }
+        }
+    }
+
 }

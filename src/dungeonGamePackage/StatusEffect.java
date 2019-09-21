@@ -1,13 +1,9 @@
 package dungeonGamePackage;
 
-class StatusEffect{
+abstract class StatusEffect{
     MovingUnit target;
     int duration;
 
-    StatusEffect(MovingUnit target, int duration){
-        this.target = target;
-        this.duration = duration;
-    }
 
     void update(){
         effect();

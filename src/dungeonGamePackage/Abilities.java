@@ -69,7 +69,8 @@ class Abilities {
                 int numChains = 3;
                 int chainCount = 0;
                 float range = 200f;
-
+                ArrayList<Enemy> enemiesHit = new ArrayList<Enemy>();
+            
                 void chain(Enemy e) {
                     e.hit = true;
                     e.takeDamage(dmg);
@@ -77,8 +78,7 @@ class Abilities {
                     Enemy closestEnemy = null;
                     for (int i = 0; i < DG.zone.enemies.size(); i++) {
                         Enemy other = DG.zone.enemies.get(i);
-                        if (other.hit)
-                            continue;
+                        if (enemiesHit.contains(other)) continue;
                         float dist = PVector.dist(e.position, other.position);
                         if (dist < shortestDist) {
                             shortestDist = dist;
@@ -90,8 +90,9 @@ class Abilities {
                         return;
                     } else {
                         chainCount++;
+                        enemiesHit.add(closestEnemy);
                         PVector[] lightningPoints = generateLightning(e.position, closestEnemy.position.copy());
-                        DG.particles.add(new Particle(30) {
+                        DG.particles.add(new Particle(20) {
 
                             @Override
                             void display() {

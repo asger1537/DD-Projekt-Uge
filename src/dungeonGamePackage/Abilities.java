@@ -26,6 +26,12 @@ class Abilities {
                     hit = false;
                     alreadyhit.add(e);
                 }
+
+                @Override
+                void display() {
+                    DG.imageMode(DG.CENTER);
+                    DG.image(DG.frostBoltimage, position.x, position.y);
+                }
             });
             cdCurrent = cd;
         }

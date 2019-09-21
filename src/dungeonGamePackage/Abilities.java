@@ -3,9 +3,20 @@ package dungeonGamePackage;
 //A collection of the ability anonymous classes 
 import static dungeonGamePackage.DungeonGame.DG;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 import processing.core.PVector;
 
 class Abilities {
+    static Ability piercingProjectile = new Ability(0.05f,100, null){
+        @Override
+        void use() {
+            DG.projectiles.add(new Projectile(PVector.add(DG.p.position, DG.p.barrelLongSide),
+                    PVector.mult(DG.p.lookDirection, 10f), (int) (scaling * DG.p.dmg), new String[] { "Enemy" }, 40,
+                    DG.color(0,0,255)) {
+                        
+                HashSet<Enemy> alreadyhit = new HashSet<Enemy>();
 
     static Ability standardShot = new Ability(1, 0.5f, null){
         @Override    

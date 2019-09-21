@@ -16,7 +16,6 @@ abstract class Ability {
 
     //should be overriden
     void use(){
-
     }
 
     void updateCooldown(){

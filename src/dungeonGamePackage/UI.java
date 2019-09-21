@@ -81,6 +81,15 @@ class UI {
             DG.fill(50, 128);
             DG.rect(x, abilityBarY, abilityBarHeight, abilityBarHeight);
             DG.rect(x, abilityBarY + abilityBarHeight, abilityBarHeight, abilityBarTextHeight);
+            //displaying the icon of the ability in that slot
+            //DG.image(DG.p.abilities[keybindIdx].icon, x, abilityBarY);
+
+            //displaying cooldown
+            DG.fill(112, 146, 190, 128);
+            Ability a = DG.p.abilities[keybindIdx];
+            if (a != null){
+                DG.rect(x, abilityBarY + abilityBarHeight, abilityBarHeight, -abilityBarHeight*a.cdCurrent/a.cd);
+            }
             String keybind = keybinds[keybindIdx];
             DG.textSize(25);
             DG.textAlign(DG.CENTER);

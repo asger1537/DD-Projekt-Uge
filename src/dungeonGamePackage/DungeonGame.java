@@ -30,6 +30,7 @@ public class DungeonGame extends PApplet {
 		portalImg = loadImage("portal.png");
 		floorTileImg = loadImage("floorTile.png");
 		meleeEnemyImg = loadImage("meleeEnemy.png");
+		
 		currentScreen = UI.startMenu;
 		zone = new Zone(2000, 2000, 1);
 		p = new Player();

@@ -21,9 +21,9 @@ class Input{
                 }
         }
         //shoot
-        if (DG.mouseButton == DG.RIGHT){
-            DG.p.attack();
-        }
+        if (DG.mouseButton == DG.RIGHT && DG.p.abilities[0].cdCurrent == 0 && DG.p.abilities[0] != null){
+            DG.p.abilities[0].use();
+        } 
 
         for (int i = 0; i < DG.currentScreen.buttons.size(); i++){
             if (DG.currentScreen.buttons.get(i).hovered){
@@ -34,17 +34,10 @@ class Input{
 
     public static void keyPressed(){
         //using abilities
-        if (DG.key == 'q'){
-            Abilities.chainLightningShot.use();
-        } 
-        if (DG.key == 'w'){
-            
-        }
-        if (DG.key == 'e'){
-            
-        }
-        if (DG.key == 'r'){
-            
+        for (int i = 0; i < Keybinds.abilityKeybinds.length; i++){
+            if (DG.key == Keybinds.abilityKeybinds[i] && DG.p.abilities[i+1].cdCurrent == 0 && DG.p.abilities[i+1] != null){
+                DG.p.abilities[i+1].use();
+            }    
         }
     }
 

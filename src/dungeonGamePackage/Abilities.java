@@ -7,8 +7,19 @@ import processing.core.PVector;
 
 class Abilities {
 
+    static Ability standardShot = new Ability(1, 0.5f, null){
+        @Override    
+        void use(){
+            if (DG.p.atkcdCurrent == 0) {
+                DG.projectiles.add(new Projectile(PVector.add(DG.p.position, DG.p.barrelLongSide), PVector.mult(DG.p.lookDirection, 10),
+                DG.p.dmg, new String[] { "Enemy" }, 5, DG.color(30)));
+                cdCurrent = cd;
+            }
+        }
+    };
+
     
-    static Ability chainLightningShot = new Ability(1.5f, 10) {
+    static Ability chainLightningShot = new Ability(1.5f, 10, null) {
         @Override
         void use() {
             DG.projectiles.add(new Projectile(PVector.add(DG.p.position, DG.p.barrelLongSide),
@@ -81,7 +92,12 @@ class Abilities {
                 }
 
             });
+
+            cdCurrent = cd;
         }
+
+        
+
     };
 
 }

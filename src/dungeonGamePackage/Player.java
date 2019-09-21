@@ -12,6 +12,8 @@ class Player extends MovingUnit {
     int levelUpDmgIncrease;
     int levelUpTextTime;
 
+    Ability[] abilities;
+
     Player() {
         position = new PVector(radius*4,1900-radius*4); // player spawns at bottom left corner
         targetPosition = position.copy();
@@ -36,14 +38,13 @@ class Player extends MovingUnit {
         barrelWidth = radius / 2;
         barrelLongSide = new PVector();
         barrelShortSide = new PVector();
-        atkcd = 10 / lvl;
-        atkcdCurrent = 0;
-
+        abilities = new Ability[5];
+        abilities[0] = Abilities.standardShot;
+        abilities[1] = Abilities.chainLightningShot;
     }
 
     public void update() {
-        if (atkcdCurrent > 0)
-            atkcdCurrent--;
+        updateAbilityCooldowns();
         setMouseDirection();
         showBarrel();
         display();
@@ -67,14 +68,6 @@ class Player extends MovingUnit {
                 .normalize();
     }
 
-    public void attack() {
-        if (atkcdCurrent == 0 == true) {
-            DG.projectiles.add(new Projectile(PVector.add(position, barrelLongSide), PVector.mult(lookDirection, 10),
-                    dmg, new String[] { "Enemy" }, 5, DG.color(100)));
-            atkcdCurrent = atkcd;
-        }
-    }
-
     void levelUp() {
         exp -= expLevelUp;
         lvl += 1;
@@ -95,5 +88,13 @@ class Player extends MovingUnit {
 
     void onDeath() {
         DG.currentScreen = UI.deathScreen;
+    }
+
+    void updateAbilityCooldowns(){
+        for (int i = 0; i < abilities.length; i++){
+            if (abilities[i] != null){
+                abilities[i].updateCooldown();
+            }
+        }
     }
 }

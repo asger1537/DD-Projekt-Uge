@@ -19,8 +19,8 @@ class Zone {
         this.width = width;
         this.height = height;
         this.currentZone = zoneLevel;
-        this.tileRows = height/tileSize;
-        this.tileCols = width/tileSize;
+        this.tileRows = (height/tileSize)+1;
+        this.tileCols = (width/tileSize)+1;
         completed = false;
 
         tiles = new GridTile[tileRows][tileCols];
@@ -57,6 +57,8 @@ class Zone {
                 spawnPosition = position;
             } else {
                 spawnPosition = PVector.add(position, spawnVector);
+                if(spawnPosition.x < 0){spawnPosition.x = 0;} else if(spawnPosition.x>= width){spawnPosition.x = width-1;}
+                if(spawnPosition.y < 0){spawnPosition.y = 0;} else if(spawnPosition.y>= height){spawnPosition.y = height-1;}
             }
             spawnVector.rotate(2 * DG.PI / numEnemies * DG.random(0.8f, 1.2f));
             if (mobTypeID == 0) {
@@ -79,7 +81,7 @@ class Zone {
             for (int j = 0; j < enemies.size(); j++) {
                 int maxTries = 100;
                 while (maxTries > 0 && PVector.dist(spawnPosition, enemies.get(j).position) < maxDistance) {
-                    x = (int) DG.random(10, width - 10);
+                    x = (int) DG.random(300, width - 300);
                     y = (int) DG.random(height / 4, height - height / 4);
                     spawnPosition = new PVector(x, y);
                     --maxTries;

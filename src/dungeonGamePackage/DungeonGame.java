@@ -14,7 +14,7 @@ public class DungeonGame extends PApplet {
 	Screen currentScreen;
 	ArrayList<Projectile> projectiles;
 	ArrayList<Particle> particles;
-	PImage portalImg, floorTileImg, meleeEnemyImg, standardShotIcon, chainLightningShotIcon;
+	PImage portalImg, floorTileImg, meleeEnemyImg, standardShotIcon, chainLightningShotIcon, frostBoltimage;
 
 	public static void main(String[] args) {
 		PApplet.main("dungeonGamePackage.DungeonGame");
@@ -32,7 +32,8 @@ public class DungeonGame extends PApplet {
 		meleeEnemyImg = loadImage("meleeEnemy.png");
 		standardShotIcon = loadImage("standardShotIcon.png");
 		chainLightningShotIcon = loadImage("chainLightningShotIcon.png");
-
+		frostBoltimage = loadImage("frostboltpng.png");
+		
 		currentScreen = UI.startMenu;
 		zone = new Zone(2000, 2000, 1);
 		p = new Player();

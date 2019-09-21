@@ -32,7 +32,6 @@ abstract class Enemy extends MovingUnit {
                     enemy.target = DG.p;
                 }
             }
-
         }
     }
 

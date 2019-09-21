@@ -9,7 +9,7 @@ import java.util.HashSet;
 import processing.core.PVector;
 
 class Abilities {
-    static Ability piercingProjectile = new Ability(0.05f,100, null){
+    static Ability piercingProjectile = new Ability(0.05f,10, null){
         @Override
         void use() {
             DG.projectiles.add(new Projectile(PVector.add(DG.p.position, DG.p.barrelLongSide),
@@ -26,7 +26,14 @@ class Abilities {
                     hit = false;
                     alreadyhit.add(e);
                 }
+
+                @Override
+                void display() {
+                    DG.imageMode(DG.CENTER);
+                    DG.image(DG.frostBoltimage, position.x, position.y);
+                }
             });
+            cdCurrent = cd;
         }
     };
 

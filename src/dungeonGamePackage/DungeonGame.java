@@ -39,6 +39,7 @@ public class DungeonGame extends PApplet {
 		p = new Player();
 		p.learnAbility(Abilities.standardShot, 0);
 		p.learnAbility(Abilities.chainLightningShot, 1);
+		p.learnAbility(Abilities.piercingProjectile, 2);
 		//p.learnAbility(Abilities., idx);
 		UI.setAbilityButtons();
 		zone.spawnZoneEnemies();

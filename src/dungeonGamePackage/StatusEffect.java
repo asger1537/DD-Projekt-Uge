@@ -1,3 +1,5 @@
+package dungeonGamePackage;
+
 class StatusEffect{
     MovingUnit target;
     int duration;

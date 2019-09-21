@@ -88,24 +88,24 @@ abstract class MovingUnit {
 
     void showBarrel() {
         //if (lookDirection != null) {
-            DG.fill(0);
-            // drawing the barrel
-            barrelLongSide = PVector.mult(lookDirection, barrelLength);
-            barrelShortSide = new PVector(-lookDirection.y, lookDirection.x);
-            DG.beginShape();
-            v1 = PVector.add(position, PVector.mult(barrelShortSide, barrelWidth));
-            v2 = PVector.add(position, PVector.mult(barrelShortSide, -barrelWidth));
-            v3 = PVector.add(v2, barrelLongSide);
-            v4 = PVector.add(v1, barrelLongSide);
-            // DG.pushMatrix();
-            // DG.translate(position.x, position.y);
-            DG.vertex(v1.x, v1.y);
-            DG.vertex(v2.x, v2.y);
-            DG.vertex(v3.x, v3.y);
-            DG.vertex(v4.x, v4.y);
-            DG.endShape(2);
-            // DG.popMatrix();
-        }
+        DG.fill(0);
+        // drawing the barrel
+        barrelLongSide = PVector.mult(lookDirection, barrelLength);
+        barrelShortSide = new PVector(-lookDirection.y, lookDirection.x);
+        DG.beginShape();
+        v1 = PVector.add(position, PVector.mult(barrelShortSide, barrelWidth));
+        v2 = PVector.add(position, PVector.mult(barrelShortSide, -barrelWidth));
+        v3 = PVector.add(v2, barrelLongSide);
+        v4 = PVector.add(v1, barrelLongSide);
+        // DG.pushMatrix();
+        // DG.translate(position.x, position.y);
+        DG.vertex(v1.x, v1.y);
+        DG.vertex(v2.x, v2.y);
+        DG.vertex(v3.x, v3.y);
+        DG.vertex(v4.x, v4.y);
+        DG.endShape(2);
+        // DG.popMatrix();
+        
     }
 
     void updateStatusEffects(){
@@ -113,4 +113,4 @@ abstract class MovingUnit {
             statusEffects.get(i).update();
         }
     }
-//}
+}

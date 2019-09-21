@@ -35,6 +35,7 @@ class RangedEnemy extends Enemy {
 
     @Override
     public void update() {
+        updateStatusEffects();
         checkAggro();
         if (target != null) {
             targetPosition = target.position;

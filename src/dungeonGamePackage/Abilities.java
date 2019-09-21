@@ -9,7 +9,7 @@ import java.util.HashSet;
 import processing.core.PVector;
 
 class Abilities {
-    static Ability piercingProjectile = new Ability(0.05f,10, null){
+    static Ability piercingProjectile = new Ability(0.05f, 10, DG.frostBoltimage){
         @Override
         void use() {
             DG.projectiles.add(new Projectile(PVector.add(DG.p.position, DG.p.barrelLongSide),
@@ -34,6 +34,12 @@ class Abilities {
                 }
             });
             cdCurrent = cd;
+        }
+
+        @Override
+        void updateDescription(){
+            description = "Fires a piercing frostbolt that deals less damage for each enemy hit.";
+            formatDescription();
         }
     };
 

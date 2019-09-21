@@ -30,7 +30,7 @@ class Abilities {
         }
     };
 
-    static Ability standardShot = new Ability(1, 0.5f, null) {
+    static Ability standardShot = new Ability(1, 0.5f, DG.standardShotIcon) {
         @Override
         void use() {
             if (DG.p.atkcdCurrent == 0) {
@@ -39,9 +39,15 @@ class Abilities {
                 cdCurrent = cd;
             }
         }
+
+        @Override 
+        void updateDescription(){
+            description = String.format("Fires a shot that deals %d damage to an enemy", (int)(DG.p.dmg*scaling));
+            formatDescription();
+        }
     };
 
-    static Ability chainLightningShot = new Ability(1.5f, 10, null) {
+    static Ability chainLightningShot = new Ability(1.5f, 10, DG.chainLightningShotIcon) {
         @Override
         void use() {
             DG.projectiles.add(new Projectile(PVector.add(DG.p.position, DG.p.barrelLongSide),
@@ -118,6 +124,11 @@ class Abilities {
             cdCurrent = cd;
         }
 
+        @Override 
+        void updateDescription(){
+            description = String.format("Fires a shot with lightning that chains to 3 enemies dealing %d damage.", (int)(DG.p.dmg*scaling));
+            formatDescription();
+        }
     };
 
 }

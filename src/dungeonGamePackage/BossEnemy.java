@@ -1,7 +1,10 @@
 package dungeonGamePackage;
 
-import processing.core.PVector;
 import static dungeonGamePackage.DungeonGame.DG;
+
+import java.util.ArrayList;
+
+import processing.core.PVector;
 
 class BossEnemy extends RangedEnemy {
 
@@ -26,10 +29,12 @@ class BossEnemy extends RangedEnemy {
         barrelLongSide = new PVector();
         barrelShortSide = new PVector();
         lookDirection = new PVector(1,0);
+        statusEffects = new ArrayList<StatusEffect>();
     }
 
     @Override
     public void update() {
+        updateStatusEffects();
         showBarrel();
         display();
         checkAggro();

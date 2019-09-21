@@ -1,7 +1,10 @@
 package dungeonGamePackage;
 
-import processing.core.PVector;
 import static dungeonGamePackage.DungeonGame.DG;
+
+import java.util.ArrayList;
+
+import processing.core.PVector;
 
 class Player extends MovingUnit {
     int exp;// experience points
@@ -39,13 +42,12 @@ class Player extends MovingUnit {
         barrelLongSide = new PVector();
         barrelShortSide = new PVector();
         abilities = new Ability[5];
-        abilities[0] = Abilities.standardShot;
-        abilities[1] = Abilities.chainLightningShot;
-        abilities[2] = Abilities.piercingProjectile;
+        statusEffects = new ArrayList<StatusEffect>();
     }
 
     public void update() {
         updateAbilityCooldowns();
+        updateStatusEffects();
         setMouseDirection();
         showBarrel();
         display();
@@ -97,5 +99,9 @@ class Player extends MovingUnit {
                 abilities[i].updateCooldown();
             }
         }
+    }
+
+    void learnAbility(Ability a, int idx){
+        abilities[idx] = a;
     }
 }

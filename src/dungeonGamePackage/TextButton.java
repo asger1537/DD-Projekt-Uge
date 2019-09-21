@@ -8,8 +8,8 @@ class TextButton extends Button{
     int textColor, fontSize;
 
     TextButton(float x, float y, float w, float h, int color,
-     String text, int textColor, int fontSize, ClickInterface onClick){
-        super(x, y, w, h, color, onClick);
+     String text, int textColor, int fontSize, ClickInterface onClick, int mode){
+        super(x, y, w, h, color, onClick, mode);
         this.borderWidth = 1;
         this.text = text;
         this.textColor = textColor;

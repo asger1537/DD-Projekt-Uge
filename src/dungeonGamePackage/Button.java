@@ -7,8 +7,9 @@ class Button extends UIelement{
     float borderWidth;
     boolean hovered;
     ClickInterface onClick;
+    int mode;
 
-    Button(float x, float y, float w, float h, int color, ClickInterface onClick){
+    Button(float x, float y, float w, float h, int color, ClickInterface onClick, int mode){
         this.x = x;
         this.y = y;
         this.w = w;
@@ -17,6 +18,7 @@ class Button extends UIelement{
         this.borderWidth = 1;
         this.hovered = false;
         this.onClick = onClick;
+        this.mode = mode;
     }
 
     @Override
@@ -33,7 +35,8 @@ class Button extends UIelement{
     void display(){
         DG.fill(color);
         DG.strokeWeight(borderWidth);
-        DG.rectMode(DG.CENTER);
+        if (mode == 0) DG.rectMode(DG.CORNER);
+        if (mode == 3) DG.rectMode(DG.CENTER);
         DG.rect(x, y, w, h);
         DG.strokeWeight(1);
     }
@@ -43,7 +46,11 @@ class Button extends UIelement{
     }
 
     void updateHovered(){
-        hovered = DG.mouseX > x - w/2f && DG.mouseX < x + w/2f + w && DG.mouseY > y - h/2f && DG.mouseY < y + h/2f;
+        if (mode == 0){
+            hovered = DG.mouseX > x && DG.mouseX < x+w && DG.mouseY > y && DG.mouseY < y+h;
+        } else{
+            hovered = DG.mouseX > x - w/2f && DG.mouseX < x + w/2f + w && DG.mouseY > y - h/2f && DG.mouseY < y + h/2f;
+        }
     }
 
 

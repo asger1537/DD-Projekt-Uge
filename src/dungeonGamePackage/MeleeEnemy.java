@@ -1,7 +1,10 @@
 package dungeonGamePackage;
 
-import processing.core.PVector;
 import static dungeonGamePackage.DungeonGame.DG;
+
+import java.util.ArrayList;
+
+import processing.core.PVector;
 
 class MeleeEnemy extends Enemy {
 
@@ -22,10 +25,12 @@ class MeleeEnemy extends Enemy {
         atkcdCurrent = 0;
         expReward = 10*lvl;
         healthBarLength = 30;
+        statusEffects = new ArrayList<StatusEffect>();
     }
 
     @Override
     public void update() {
+        updateStatusEffects();
         display();
         checkAggro();
         if (target != null) {

@@ -10,9 +10,11 @@ class UI {
     static float expBarX, expBarY, expBarLength, expBarHeight;
     static String[] keybinds;
 
+    static AbilityButton[] abilityButtons;
     static Screen startMenu, gameScreen, deathScreen;
 
     static void initializeVariables() {
+        abilityButtons = new AbilityButton[5];
         keybinds = new String[] { "r clk", "q", "w", "e", "r" };
 
         // AbilityBar variables
@@ -55,13 +57,13 @@ class UI {
         ClickInterface startButtonOnClick = () -> DG.currentScreen = gameScreen;
         ArrayList<Button> startMenuButtons = new ArrayList<Button>();
         startMenuButtons.add(new TextButton(DG.width / 2, DG.height / 2, 100f, 25, DG.color(128), "START", DG.color(0),
-                18, startButtonOnClick));
+                18, startButtonOnClick, DG.CENTER));
         startMenu = new Screen(startMenuButtons);
 
         ClickInterface restartButtonOnClick = () -> DG.setup();
         ArrayList<Button> deathScreenButtons = new ArrayList<Button>();
         deathScreenButtons.add(new TextButton(DG.width / 2, DG.height / 2, 200f, 25, DG.color(128), "GO START MENU",
-                DG.color(0), 18, restartButtonOnClick));
+                DG.color(0), 18, restartButtonOnClick, DG.CENTER));
         deathScreen = new Screen(deathScreenButtons) {
             @Override
             void display() {
@@ -89,6 +91,7 @@ class UI {
             DG.fill(112, 146, 190, 128);
             Ability a = DG.p.abilities[keybindIdx];
             if (a != null){
+                if (a.icon != null) abilityButtons[keybindIdx].update();
                 DG.rect(x, abilityBarY + abilityBarHeight, abilityBarHeight, -abilityBarHeight*a.cdCurrent/a.cd);
             }
             String keybind = keybinds[keybindIdx];
@@ -121,5 +124,15 @@ class UI {
     interface ClickInterface {
         void use();
     }
+
+    static void setAbilityButtons(){
+        for (int i = 0; i < DG.p.abilities.length; i++){
+            Ability a = DG.p.abilities[i];
+            if (a != null){
+                abilityButtons[i] = new AbilityButton(a, i);
+            }
+        }
+    }
+    
 
 }

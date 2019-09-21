@@ -1,6 +1,9 @@
 package dungeonGamePackage;
 
 import static dungeonGamePackage.DungeonGame.DG;
+
+import java.util.ArrayList;
+
 import processing.core.PVector;
 
 abstract class MovingUnit {
@@ -26,6 +29,7 @@ abstract class MovingUnit {
     float barrelWidth;
     int atkcd;// attack cooldown
     int atkcdCurrent;// used to count down
+    ArrayList<StatusEffect> statusEffects;
 
     void display() {
         showHealthBar();
@@ -101,6 +105,12 @@ abstract class MovingUnit {
             DG.vertex(v4.x, v4.y);
             DG.endShape(2);
             // DG.popMatrix();
+        }
+    }
+
+    void updateStatusEffects(){
+        for (int i = 0; i < statusEffects.size(); i++){
+            statusEffects.get(i).update();
         }
     }
 //}

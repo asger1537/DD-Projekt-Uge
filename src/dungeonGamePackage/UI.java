@@ -72,6 +72,9 @@ class UI {
                 DG.textSize(50);
                 DG.fill(234, 0, 0);
                 DG.text("YOU DIED", DG.width / 2f, DG.height * 0.3f);
+                DG.fill(30);
+                DG.textSize(30);
+                DG.text(String.format("YOU REACHED ZONE %d", DG.zone.currentZone), DG.width/2f, DG.height*0.35f);
             }
         };
     }

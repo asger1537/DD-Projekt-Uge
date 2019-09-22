@@ -45,6 +45,7 @@ public class DungeonGame extends PApplet {
 		zone.spawnZoneEnemies();
 		projectiles = new ArrayList<Projectile>();		
 		particles = new ArrayList<Particle>();
+		StatusEffects.initializeStatusEffectClasses();
 	}
 
 	public void draw() {

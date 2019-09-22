@@ -24,6 +24,7 @@ class Abilities {
                     super.onEnemyCollision(e);
                     e.takeDamage(dmg / (alreadyhit.size()+1));
                     hit = false;
+                    e.statusEffects.add(new StatusEffects.SpeedEffect(3, e, 0.5f));//enemies get half movement speed
                     alreadyhit.add(e);
                 }
 

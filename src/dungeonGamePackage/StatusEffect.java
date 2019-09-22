@@ -3,6 +3,7 @@ package dungeonGamePackage;
 abstract class StatusEffect{
     MovingUnit target;
     int duration;
+    float magnitude;
 
 
     void update(){
@@ -17,5 +18,4 @@ abstract class StatusEffect{
     void effect(){
 
     }
-
 }

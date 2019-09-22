@@ -103,6 +103,7 @@ class Abilities {
                                     DG.line(lightningPoints[i].x, lightningPoints[i].y, lightningPoints[i + 1].x,
                                             lightningPoints[i + 1].y);
                                 }
+                                DG.strokeWeight(1);
                                 DG.stroke(0);
                             }
                         });

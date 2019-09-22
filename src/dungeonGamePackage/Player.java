@@ -18,7 +18,7 @@ class Player extends MovingUnit {
     Ability[] abilities;
 
     Player() {
-        position = new PVector(radius*4,1900-radius*4); // player spawns at bottom left corner
+        position = new PVector(100, 1900); // player spawns at bottom left corner
         targetPosition = position.copy();
         msBase = 4f;
         msCurrent = msBase;

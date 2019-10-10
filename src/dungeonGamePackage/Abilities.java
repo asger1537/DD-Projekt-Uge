@@ -44,7 +44,7 @@ class Abilities {
         }
     };
 
-    static Ability standardShot = new Ability(1, 0.5f, DG.standardShotIcon) {
+    static Ability standardShot = new Ability(1, 0.2f, DG.standardShotIcon) {
         @Override
         void use() {
             if (DG.p.atkcdCurrent == 0) {
@@ -61,7 +61,7 @@ class Abilities {
         }
     };
 
-    static Ability chainLightningShot = new Ability(1.5f, 10, DG.chainLightningShotIcon) {
+    static Ability chainLightningShot = new Ability(2f, 10, DG.chainLightningShotIcon) {
         @Override
         void use() {
             DG.projectiles.add(new Projectile(PVector.add(DG.p.position, DG.p.barrelLongSide),
